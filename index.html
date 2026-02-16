@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>NEP-erfbelastingformulier</title>
+  </head>
+  <body>
+    <header>
+      <h1>Dit is een schoolproject!</h1>
+    </header>
+    <main>
+      <h2>Erfbelasting formulier</h2>
+      <form action="/formdeel2">
+        <section>
+          <fieldset>
+            <!-- Sectie 1: Gegevens van de overledene -->
+            <fieldset>
+              <!-- Vraag 1a: persoongegevens -->
+              <legend>Persoonsgegevens overledene</legend>
+              <!-- <div> ? -->
+              <label for="firstName">Voorletter(s) </label>
+              <input type="text" id="firstName" name="voornaam" required />
+              <label for="prefix">Tussenvoegsel(s) </label>
+              <input type="text" id="prefix" name="tussenvoegsel" />
+              <label for="lastName">Achternaam</label>
+              <input type="text" id="lastName" name="achternaam" required />
+              <label for="bsnNumber">Bsn overledene </label>
+              <input
+                type="text"
+                id="bsnNumber"
+                name="bsnNummer"
+                inputmode="numeric"
+                title="BSN
+                moet
+                9
+                cijfers
+                zijn.
+                "
+                minlength="9"
+                maxlength="9"
+                pattern="\d{9}"
+                required
+              />
+              <label for="deceaseDate">Overlijdensdatum</label>
+              <input
+                type="date"
+                id="deceaseDate"
+                name="overlijdensDatum"
+                required
+              />
+              <!-- </div> ? -->
+            </fieldset>
+            <fieldset>
+              <legend>
+                Was de overledene getrouwd of had de overledene een
+                geregistreerde partner op het moment van overlijden?
+              </legend>
+              <input type="radio" id="no" name="geregistreerdePartner" />
+              <label for="no">Nee. Ga verder met vraag 1c.</label>
+              <input type="radio" name="geregistreerdePartner" id="yes" />
+              <label for="yes">Ja</label>
+            </fieldset>
+          </fieldset>
+          <button type="submit"></button>
+        </section>
+      </form>
+    </main>
+  </body>
+</html>

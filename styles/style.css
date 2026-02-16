@@ -1,0 +1,28 @@
+/* ====================== */
+/* CSS Vars */
+/* ====================== */
+
+:html {
+  --test: red;
+}
+
+/* https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css  */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* ====================== */
+/* General styling */
+/* ====================== */
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
