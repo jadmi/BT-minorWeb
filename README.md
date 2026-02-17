@@ -21,3 +21,8 @@ Vandaag ben ik voor het grootste gedeelte bezig geweest met het maken van progre
 }
 ```
 Volgende les ga ik de workshop validatie volgen en kijken of ik dat gelijk kan toepassen. Daarnaast in het algemeen verder met de HTML en CSS.
+Todo's:
+- Akte uploaden
+- Ns font pakken van network
+- Let op kleur: witte achtergrond form, ns geel op pagina, tekst wel variaties blauw. 
+- Let op dat volgende pagina andere inputs moet hebben voor variatie
