@@ -1,9 +1,20 @@
+@font-face {
+  font-family: "headerFont";
+  src: url("../fonts/Frutiger_bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "bodyFont";
+  src: url("../fonts/Frutiger.woff2") format("woff2");
+}
+
 /* ====================== */
 /* CSS Vars */
 /* ====================== */
 
-:html {
-  --test: red;
+html {
+  --headerFont: "headerFont", sans-serif;
+  --bodyFont: "bodyFont", sans-serif;
 }
 
 /* https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css  */
@@ -25,4 +36,71 @@ h1 {
   display: flex;
   justify-content: center;
   color: red;
+}
+
+h2 {
+  margin: 1em;
+}
+
+form {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 10px;
+  background-color: #ffc917;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  color: black;
+  font-family: var(--bodyFont);
+  margin-bottom: 0.5em;
+  display: flex;
+}
+
+input {
+  margin-bottom: 1em;
+  display: block;
+  width: 100%;
+}
+
+input[type="radio"] {
+  width: fit-content;
+}
+
+legend {
+  font-size: 1.1rem;
+  font-family: var(--headerFont);
+  color: #003082;
+  padding-inline: 0;
+  margin-bottom: 0.3em;
+}
+
+/* styling van ns site */
+button {
+  color: white;
+  background-color: #0063d3;
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 0 -0.125rem 0 #004ba0;
+  padding: 0.625rem 1.125rem;
+}
+
+/* 
+input:focus:invalid {
+  background-color: rebeccapurple;
+}
+naast kleur ook een icon voor slechtziende */
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:invalid 
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:checked
+
+Hulp van Vasilis */
+.optionalChoice + div {
+  display: none;
+}
+.optionalChoice:has([value="ja"]:checked) + div {
+  display: block;
 }

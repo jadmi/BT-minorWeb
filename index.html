@@ -13,58 +13,159 @@
     <main>
       <h2>Erfbelasting formulier</h2>
       <form action="/formdeel2">
-        <section>
-          <fieldset>
-            <!-- Sectie 1: Gegevens van de overledene -->
-            <fieldset>
-              <!-- Vraag 1a: persoongegevens -->
-              <legend>Persoonsgegevens overledene</legend>
-              <!-- <div> ? -->
-              <label for="firstName">Voorletter(s) </label>
-              <input type="text" id="firstName" name="voornaam" required />
-              <label for="prefix">Tussenvoegsel(s) </label>
-              <input type="text" id="prefix" name="tussenvoegsel" />
-              <label for="lastName">Achternaam</label>
-              <input type="text" id="lastName" name="achternaam" required />
-              <label for="bsnNumber">Bsn overledene </label>
-              <input
-                type="text"
-                id="bsnNumber"
-                name="bsnNummer"
-                inputmode="numeric"
-                title="BSN
+        <fieldset>
+          <!-- Sectie 1: Gegevens van de overledene -->
+          <fieldset class="personInfo">
+            <!-- Vraag 1a: persoongegevens -->
+            <legend>Persoonsgegevens overledene</legend>
+            <label for="firstName">Voorletter(s) </label>
+            <input type="text" id="firstName" name="voornaam" required />
+            <label for="prefix">Tussenvoegsel(s) </label>
+            <input type="text" id="prefix" name="tussenvoegsel" />
+            <label for="lastName">Achternaam</label>
+            <input type="text" id="lastName" name="achternaam" required />
+            <label for="bsnNumber">Bsn overledene </label>
+            <input
+              type="text"
+              id="bsnNumber"
+              name="bsnNummer"
+              inputmode="numeric"
+              title="BSN
                 moet
                 9
                 cijfers
                 zijn.
                 "
-                minlength="9"
-                maxlength="9"
-                pattern="\d{9}"
-                required
-              />
-              <label for="deceaseDate">Overlijdensdatum</label>
+              minlength="9"
+              maxlength="9"
+              pattern="\d{9}"
+              required
+            />
+            <label for="deceaseDate">Overlijdensdatum</label>
+            <input
+              type="date"
+              id="deceaseDate"
+              name="overlijdensDatum"
+              required
+              min="2026-02-17"
+              max="2027-10-17"
+            />
+            <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content
+               /wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
+          </fieldset>
+          <!-- Vraag 1b: vragen overledene -->
+          <fieldset class="optionalChoice">
+            <legend>
+              Was de overledene getrouwd of had de overledene een geregistreerde
+              partner op het moment van overlijden?
+            </legend>
+            <label for="noPartner">Nee. Ga verder met vraag 1c.</label>
+            <input
+              type="radio"
+              id="noPartner"
+              name="geregistreerdePartner"
+              required
+            />
+            <label for="yesPartner">Ja</label>
+            <input
+              type="radio"
+              name="geregistreerdePartner"
+              id="yesPartner"
+              required
+              value="ja"
+            />
+          </fieldset>
+
+          <div>
+            <fieldset class="optionalChoice">
+              <legend>
+                Hadden de overledene en diens echtgenoot of geregistreerde
+                partner huwelijkse of partnerschapsvoorwaarden laten vastleggen
+                in een notariële akte?
+              </legend>
+              <label for="noNotarieel">Nee. Ga verder met vraag 1c.</label>
+              <input type="radio" id="noNotarieel" name="notarieelVastleggen" />
+              <label for="yesNotarieel"
+                >Ja. Stuur een kopie van de akte mee met de aangifte.</label
+              >
               <input
-                type="date"
-                id="deceaseDate"
-                name="overlijdensDatum"
-                required
+                type="radio"
+                name="notarieelVastleggen"
+                id="yesNotarieel"
+                value="ja"
               />
-              <!-- </div> ? -->
             </fieldset>
+            <div>
+              <fieldset>
+                <legend>
+                  Hadden de overledene en diens partner een finaal
+                  verrekenbeding?
+                </legend>
+                <label for="noNotarieel">Nee</label>
+                <input
+                  type="radio"
+                  id="finalSettlementNo"
+                  name="finaalVerrekenbeding"
+                />
+                <label for="yesNotarieel">Ja</label>
+                <input
+                  type="radio"
+                  name="finaalVerrekenbeding"
+                  id="finalSettlementYes"
+                />
+                <div>
+                  <label for="marriageDate"
+                    >Datum huwelijkse of partnerschapsvoorwaarden</label
+                  >
+                  <input type="date" name="trouwDatum" id="marriageDate" />
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <fieldset class="optionalChoice">
+            <legend>Had de overledene een testament?</legend>
+            <label for="noTestament">Nee. Ga verder met vraag 2.</label>
+            <input type="radio" name="testament" id="noTestament" />
+            <label for="yesTestament">Ja</label>
+            <input type="radio" name="testament" id="yesTestament" value="ja" />
+          </fieldset>
+          <div>
             <fieldset>
               <legend>
-                Was de overledene getrouwd of had de overledene een
-                geregistreerde partner op het moment van overlijden?
+                Vul de gegevens in van de notaris die het testament heeft
+                opgemaakt en de datum van het testament.
               </legend>
-              <input type="radio" id="no" name="geregistreerdePartner" />
-              <label for="no">Nee. Ga verder met vraag 1c.</label>
-              <input type="radio" name="geregistreerdePartner" id="yes" />
-              <label for="yes">Ja</label>
+              <label for="protocolnumber">Protocolnummer notaris</label>
+              <input
+                type="text"
+                name="protocolnummer"
+                id="protocolnumber"
+                inputmode="numeric"
+                title="Protocolnummer moet 6 cijfers zijn.
+              "
+                minlength="6"
+                maxlength="6"
+                pattern="\d{6}"
+                required
+              />
+              <label for="firstNameNotary">Voorletter(s) </label>
+              <input type="text" id="firstNameNotary" name="voornaamNotaris" />
+              <label for="prefixNotary">Tussenvoegsel(s) </label>
+              <input
+                type="text"
+                id="prefixNotary"
+                name="tussenvoegselNotaris"
+              />
+              <label for="lastNameNotary">Achternaam</label>
+              <input type="text" id="lastNameNotary" name="achternaamNotaris" />
+              <label for="testamentDate"
+                >Datum van het testament of van de laatste wijziging</label
+              >
+              <input type="date" name="testamentDatum" id="testamentDate" />
             </fieldset>
-          </fieldset>
-          <button type="submit"></button>
-        </section>
+          </div>
+        </fieldset>
+        <button type="submit">Volgende</button>
       </form>
     </main>
   </body>
