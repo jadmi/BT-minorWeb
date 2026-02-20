@@ -32,4 +32,8 @@ Todo's:
 
 https://github.com/user-attachments/assets/1134d2f0-fbbb-460e-881d-6d39f27830e2
 
+#Voortgang week 1 gesprek
+- Commit often push once (best practice)
+- Kijk naar andere manier van progressive disclosure doen, zonder divs, of duidelijkere namen voor overdraagbaarheid - fieldset namen geven?
+- Ik gebruik nee, ga verder met 1c maar zet 1c zelf niet in de tekst
 
