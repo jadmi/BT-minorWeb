@@ -1,3 +1,5 @@
+# Dit is een school project!
+
 # BT-minorWeb
 
 
