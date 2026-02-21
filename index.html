@@ -59,21 +59,25 @@
               Was de overledene getrouwd of had de overledene een geregistreerde
               partner op het moment van overlijden?
             </legend>
-            <label for="noPartner">Nee. Ga verder met vraag 1c.</label>
-            <input
-              type="radio"
-              id="noPartner"
-              name="geregistreerdePartner"
-              required
-            />
-            <label for="yesPartner">Ja</label>
-            <input
-              type="radio"
-              name="geregistreerdePartner"
-              id="yesPartner"
-              required
-              value="ja"
-            />
+            <label for="noPartner" class="radioWrapper">
+              <input
+                type="radio"
+                id="noPartner"
+                name="geregistreerdePartner"
+                required
+              />
+              Nee. Ga verder met vraag 2.
+            </label>
+            <label for="yesPartner" class="radioWrapper">
+              <input
+                type="radio"
+                name="geregistreerdePartner"
+                id="yesPartner"
+                required
+                value="ja"
+              />
+              Ja
+            </label>
           </fieldset>
 
           <div>
@@ -83,17 +87,29 @@
                 partner huwelijkse of partnerschapsvoorwaarden laten vastleggen
                 in een notariële akte?
               </legend>
-              <label for="noNotarieel">Nee. Ga verder met vraag 1c.</label>
-              <input type="radio" id="noNotarieel" name="notarieelVastleggen" />
-              <label for="yesNotarieel"
-                >Ja. Stuur een kopie van de akte mee met de aangifte.</label
+
+              <label for="noNotarieel" class="radioWrapper">
+                <input
+                  type="radio"
+                  id="noNotarieel"
+                  name="notarieelVastleggen"
+                />
+
+                Nee. Ga verder met vraag 2.</label
               >
-              <input
-                type="radio"
-                name="notarieelVastleggen"
-                id="yesNotarieel"
-                value="ja"
-              />
+
+              <label for="yesNotarieel" class="radioWrapper">
+                <input
+                  type="radio"
+                  name="notarieelVastleggen"
+                  id="yesNotarieel"
+                  value="ja"
+                />
+                Ja. Stuur een kopie van de akte mee met de aangifte.</label
+              >
+
+              <label for="deed">Upload bestand</label>
+              <input type="file" name="akte" id="deed" />
             </fieldset>
             <div>
               <fieldset>
@@ -101,33 +117,50 @@
                   Hadden de overledene en diens partner een finaal
                   verrekenbeding?
                 </legend>
-                <label for="noNotarieel">Nee</label>
-                <input
-                  type="radio"
-                  id="finalSettlementNo"
-                  name="finaalVerrekenbeding"
-                />
-                <label for="yesNotarieel">Ja</label>
-                <input
-                  type="radio"
-                  name="finaalVerrekenbeding"
-                  id="finalSettlementYes"
-                />
-                <div>
-                  <label for="marriageDate"
-                    >Datum huwelijkse of partnerschapsvoorwaarden</label
-                  >
-                  <input type="date" name="trouwDatum" id="marriageDate" />
-                </div>
+
+                <label for="finalSettlementNo" class="radioWrapper">
+                  <input
+                    type="radio"
+                    id="finalSettlementNo"
+                    name="finaalVerrekenbeding"
+                  />
+                  Nee</label
+                >
+
+                <label for="finalSettlementYes" class="radioWrapper">
+                  <input
+                    type="radio"
+                    name="finaalVerrekenbeding"
+                    id="finalSettlementYes"
+                  />
+
+                  Ja</label
+                >
+
+                <label for="marriageDate"
+                  >Datum huwelijkse of partnerschapsvoorwaarden</label
+                >
+                <input type="date" name="trouwDatum" id="marriageDate" />
               </fieldset>
             </div>
           </div>
           <fieldset class="optionalChoice">
             <legend>Had de overledene een testament?</legend>
-            <label for="noTestament">Nee. Ga verder met vraag 2.</label>
-            <input type="radio" name="testament" id="noTestament" />
-            <label for="yesTestament">Ja</label>
-            <input type="radio" name="testament" id="yesTestament" value="ja" />
+
+            <label for="noTestament" class="radioWrapper">
+              <input type="radio" name="testament" id="noTestament" />
+              Nee. Ga verder met vraag 3.</label
+            >
+
+            <label for="yesTestament" class="radioWrapper">
+              <input
+                type="radio"
+                name="testament"
+                id="yesTestament"
+                value="ja"
+              />
+              Ja</label
+            >
           </fieldset>
           <div>
             <fieldset>

@@ -1,11 +1,11 @@
 @font-face {
   font-family: "headerFont";
-  src: url("../fonts/Frutiger_bold.woff2") format("woff2");
+  src: url("../fonts/nssans-bold.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "bodyFont";
-  src: url("../fonts/Frutiger.woff2") format("woff2");
+  src: url("../fonts/nssans-regular.woff2") format("woff2");
 }
 
 /* ====================== */
@@ -13,8 +13,9 @@
 /* ====================== */
 
 html {
-  --headerFont: "headerFont", sans-serif;
-  --bodyFont: "bodyFont", sans-serif;
+  --headerFont: "headerFont", Helvetica, Arial, sans-serif;
+  --bodyFont: "bodyFont", Helvetica, Arial, sans-serif;
+  --textFontsize: 0.9rem;
 }
 
 /* https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css  */
@@ -39,43 +40,50 @@ h1 {
 }
 
 h2 {
-  margin: 1em;
+  margin: 1rem;
 }
 
 form {
-  padding: 1em;
-  margin: 1em;
-  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 5px;
   background-color: #ffc917;
 }
 
 fieldset {
   border: none;
+  padding: 0.3rem;
+}
+
+input {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+input[type="radio"] {
+  margin: 0;
+  width: fit-content;
+}
+
+.radioWrapper {
+  gap: 0.5em;
+}
+
+legend {
+  font-family: var(--headerFont);
+  font-size: var(--textFontsize);
+  color: #003082;
+  padding-inline: 0;
+  margin-bottom: 0.3em;
 }
 
 label {
   color: black;
   font-family: var(--bodyFont);
+  font-weight: 400;
+  font-size: var(--textFontsize);
   margin-bottom: 0.5em;
   display: flex;
-}
-
-input {
-  margin-bottom: 1em;
-  display: block;
-  width: 100%;
-}
-
-input[type="radio"] {
-  width: fit-content;
-}
-
-legend {
-  font-size: 1.1rem;
-  font-family: var(--headerFont);
-  color: #003082;
-  padding-inline: 0;
-  margin-bottom: 0.3em;
 }
 
 /* styling van ns site */
