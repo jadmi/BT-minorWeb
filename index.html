@@ -17,7 +17,7 @@
           <!-- Sectie 1: Gegevens van de overledene -->
           <fieldset class="personInfo">
             <!-- Vraag 1a: persoongegevens -->
-            <legend>Persoonsgegevens overledene</legend>
+            <legend>1. Persoonsgegevens overledene</legend>
             <label for="firstName">Voorletter(s) </label>
             <input type="text" id="firstName" name="voornaam" required />
             <label for="prefix">Tussenvoegsel(s) </label>
@@ -50,14 +50,13 @@
               min="2026-02-17"
               max="2027-10-17"
             />
-            <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content
-               /wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
+            <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
           </fieldset>
           <!-- Vraag 1b: vragen overledene -->
           <fieldset class="optionalChoice">
             <legend>
-              Was de overledene getrouwd of had de overledene een geregistreerde
-              partner op het moment van overlijden?
+              2. Was de overledene getrouwd of had de overledene een
+              geregistreerde partner op het moment van overlijden?
             </legend>
             <label for="noPartner" class="radioWrapper">
               <input
@@ -66,7 +65,7 @@
                 name="geregistreerdePartner"
                 required
               />
-              Nee. Ga verder met vraag 2.
+              Nee. Ga verder met vraag 3.
             </label>
             <label for="yesPartner" class="radioWrapper">
               <input
@@ -80,7 +79,7 @@
             </label>
           </fieldset>
 
-          <div>
+          <div class="optionalQuestion">
             <fieldset class="optionalChoice">
               <legend>
                 Hadden de overledene en diens echtgenoot of geregistreerde
@@ -95,7 +94,7 @@
                   name="notarieelVastleggen"
                 />
 
-                Nee. Ga verder met vraag 2.</label
+                Nee. Ga verder met vraag 3.</label
               >
 
               <label for="yesNotarieel" class="radioWrapper">
@@ -108,10 +107,12 @@
                 Ja. Stuur een kopie van de akte mee met de aangifte.</label
               >
 
-              <label for="deed">Upload bestand</label>
-              <input type="file" name="akte" id="deed" />
+              <label for="deed" class="fileLabel"
+                >Upload akte
+                <input type="file" name="akte" id="deed" />
+              </label>
             </fieldset>
-            <div>
+            <div class="optionalQuestion">
               <fieldset>
                 <legend>
                   Hadden de overledene en diens partner een finaal
@@ -145,11 +146,11 @@
             </div>
           </div>
           <fieldset class="optionalChoice">
-            <legend>Had de overledene een testament?</legend>
+            <legend>3. Had de overledene een testament?</legend>
 
             <label for="noTestament" class="radioWrapper">
               <input type="radio" name="testament" id="noTestament" />
-              Nee. Ga verder met vraag 3.</label
+              Nee. Ga verder met vraag 4.</label
             >
 
             <label for="yesTestament" class="radioWrapper">
@@ -162,7 +163,7 @@
               Ja</label
             >
           </fieldset>
-          <div>
+          <div class="optionalQuestion">
             <fieldset>
               <legend>
                 Vul de gegevens in van de notaris die het testament heeft
