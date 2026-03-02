@@ -65,4 +65,4 @@ Zodra required er ook op staat zal de eerste submit de html default error messag
 Hiermee geëxperimenteerd, blur of niet? Blijkt redelijk goed te werken maar niet mijn gewenste manier voor form validation, dus ga ik met een andere manier aan de slag.
 
 Ook over user:valid en invalid geleerd.
-
+<img width="267" height="266" alt="Screenshot 2026-03-02 at 15 37 27" src="https://github.com/user-attachments/assets/3bb3beda-a4f1-49bc-86f8-a0c7b6ad7b2b" />
