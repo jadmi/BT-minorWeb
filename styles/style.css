@@ -15,7 +15,9 @@
 html {
   --headerFont: "headerFont", Helvetica, Arial, sans-serif;
   --bodyFont: "bodyFont", Helvetica, Arial, sans-serif;
-  --textFontsize: 0.95rem;
+  --bodyFontsize: clamp(0.95rem, 0.918rem + 0.16vw, 1.05rem);
+  --headerFontsize: clamp(1rem, 0.952rem + 0.24vw, 1.15rem);
+  --radioSize: clamp(17px, 2vw, 20px);
   --nsBlue: #0063d3;
 }
 
@@ -35,8 +37,7 @@ body {
 /* ====================== */
 
 h1 {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   color: red;
 }
 
@@ -51,7 +52,7 @@ h2 {
 form {
   padding: 0.5rem;
   margin: 1rem;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: #ffc916;
   max-width: 550px;
 }
@@ -70,25 +71,17 @@ fieldset {
 }
 
 input {
+  font-size: inherit;
   margin-bottom: 1em;
   width: 100%;
-  padding: 6px;
+  padding: clamp(6px, 2vw, 9px);
   outline: 0;
   border-radius: 3px;
   border: 1px solid #85868a;
 }
 
-/* https://www.youtube.com/watch?v=awNYtIAu6pI */
-/* input:user-valid {
-  border: 3px solid green;
-}
-
-input:user-invalid {
-  border: 3px solid red;
-} */
-
 /* Kleuren van ns */
-input[type="text"]:focus {
+input:focus {
   border: 1px solid var(--nsBlue);
   box-shadow:
     0 0 0 1px var(--nsBlue),
@@ -97,17 +90,46 @@ input[type="text"]:focus {
     0 8px 16px rgba(0, 0, 0, 0.03);
   caret-color: var(--nsBlue);
 }
+
+/* https://www.youtube.com/watch?v=awNYtIAu6pI */
+input:user-valid {
+  outline: 2px solid rgb(24, 166, 24);
+}
+
+/* input:user-valid + span::before {
+  content: "✓";
+  color: green;
+} */
+
+input:user-invalid {
+  outline: 2px solid rgb(212, 60, 60);
+}
+
+input:user-valid:focus,
+input:user-invalid:focus {
+  outline: 1px solid var(--nsBlue);
+}
+
+input[type="radio"]:user-valid,
+input[type="radio"]:user-invalid {
+  outline: none;
+}
+
 /* 
 https://stackoverflow.com/questions/44560597/flexbox-issue-while-aligning-radio-button */
 input[type="radio"] {
   margin: 0;
-  height: 17px;
-  width: 17px;
+  height: var(--radioSize);
+  width: var(--radioSize);
   flex-shrink: 0;
 }
 
 input[type="radio"]:checked {
   accent-color: rgb(0, 168, 137);
+}
+
+input[type="radio"]:focus {
+  box-shadow: none;
 }
 
 input[type="radio"]:focus-visible {
@@ -148,7 +170,7 @@ input::file-selector-button {
 
 legend {
   font-family: var(--headerFont);
-  font-size: var(--textFontsize);
+  font-size: var(--headerFontsize);
   color: #003082;
   padding-inline: 0;
   margin-bottom: 0.3em;
@@ -159,7 +181,7 @@ label {
   color: black;
   font-family: var(--bodyFont);
   font-weight: 400;
-  font-size: var(--textFontsize);
+  font-size: var(--bodyFontsize);
   margin-bottom: 0.5em;
   display: flex;
 }

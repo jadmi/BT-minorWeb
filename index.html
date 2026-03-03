@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>NEP-erfbelastingformulier</title>
+    <script src="js/formvalidity.js" defer></script>
   </head>
   <body>
     <header>
@@ -20,6 +21,8 @@
             <legend>1. Persoonsgegevens overledene</legend>
             <label for="firstName">Voorletter(s) </label>
             <input type="text" id="firstName" name="voornaam" required />
+            <span></span>
+
             <label for="prefix">Tussenvoegsel(s) </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
             <label for="lastName">Achternaam</label>
@@ -30,17 +33,17 @@
               id="bsnNumber"
               name="bsnNummer"
               inputmode="numeric"
-              title="BSN
+              minlength="8"
+              maxlength="9"
+              pattern="\d{8,9}"
+              required
+            />
+            <!-- title="BSN
                 moet
                 9
                 cijfers
                 zijn.
-                "
-              minlength="9"
-              maxlength="9"
-              pattern="\d{9}"
-              required
-            />
+                " -->
             <label for="deceaseDate">Overlijdensdatum</label>
             <input
               type="date"
@@ -58,20 +61,14 @@
               2. Was de overledene getrouwd of had de overledene een
               geregistreerde partner op het moment van overlijden?
             </legend>
-            <label for="noPartner" class="radioWrapper">
-              <input
-                type="radio"
-                id="noPartner"
-                name="geregistreerdePartner"
-                required
-              />
+            <label class="radioWrapper">
+              <input type="radio" name="geregistreerdePartner" required />
               Nee. Ga verder met vraag 3.
             </label>
-            <label for="yesPartner" class="radioWrapper">
+            <label class="radioWrapper">
               <input
                 type="radio"
                 name="geregistreerdePartner"
-                id="yesPartner"
                 required
                 value="ja"
               />
@@ -87,23 +84,14 @@
                 in een notariële akte?
               </legend>
 
-              <label for="noNotarieel" class="radioWrapper">
-                <input
-                  type="radio"
-                  id="noNotarieel"
-                  name="notarieelVastleggen"
-                />
+              <label class="radioWrapper">
+                <input type="radio" name="notarieelVastleggen" />
 
                 Nee. Ga verder met vraag 3.</label
               >
 
-              <label for="yesNotarieel" class="radioWrapper">
-                <input
-                  type="radio"
-                  name="notarieelVastleggen"
-                  id="yesNotarieel"
-                  value="ja"
-                />
+              <label class="radioWrapper">
+                <input type="radio" name="notarieelVastleggen" value="ja" />
                 Ja. Stuur een kopie van de akte mee met de aangifte.</label
               >
 
@@ -119,47 +107,32 @@
                   verrekenbeding?
                 </legend>
 
-                <label for="finalSettlementNo" class="radioWrapper">
-                  <input
-                    type="radio"
-                    id="finalSettlementNo"
-                    name="finaalVerrekenbeding"
-                  />
+                <label class="radioWrapper">
+                  <input type="radio" name="finaalVerrekenbeding" />
                   Nee</label
                 >
 
-                <label for="finalSettlementYes" class="radioWrapper">
-                  <input
-                    type="radio"
-                    name="finaalVerrekenbeding"
-                    id="finalSettlementYes"
-                  />
+                <label class="radioWrapper">
+                  <input type="radio" name="finaalVerrekenbeding" />
 
                   Ja</label
                 >
 
-                <label for="marriageDate"
-                  >Datum huwelijkse of partnerschapsvoorwaarden</label
-                >
-                <input type="date" name="trouwDatum" id="marriageDate" />
+                <label>Datum huwelijkse of partnerschapsvoorwaarden</label>
+                <input type="date" name="trouwDatum" />
               </fieldset>
             </div>
           </div>
           <fieldset class="optionalChoice">
             <legend>3. Had de overledene een testament?</legend>
 
-            <label for="noTestament" class="radioWrapper">
-              <input type="radio" name="testament" id="noTestament" />
+            <label class="radioWrapper">
+              <input type="radio" name="testament" required />
               Nee. Ga verder met vraag 4.</label
             >
 
-            <label for="yesTestament" class="radioWrapper">
-              <input
-                type="radio"
-                name="testament"
-                id="yesTestament"
-                value="ja"
-              />
+            <label class="radioWrapper">
+              <input type="radio" name="testament" value="ja" />
               Ja</label
             >
           </fieldset>
@@ -175,12 +148,11 @@
                 name="protocolnummer"
                 id="protocolnumber"
                 inputmode="numeric"
-                title="Protocolnummer moet 6 cijfers zijn.
-              "
                 minlength="6"
                 maxlength="6"
                 pattern="\d{6}"
               />
+              <!-- title="Protocolnummer moet 6 cijfers zijn."  js? -->
               <label for="firstNameNotary">Voorletter(s) </label>
               <input type="text" id="firstNameNotary" name="voornaamNotaris" />
               <label for="prefixNotary">Tussenvoegsel(s) </label>
@@ -198,7 +170,7 @@
             </fieldset>
           </div>
         </fieldset>
-        <button type="submit">Volgende</button>
+        <button type="submit">Verstuur</button>
       </form>
     </main>
   </body>
