@@ -67,5 +67,6 @@ Ook over user:valid en invalid geleerd, vervolgens toegepast en gestyled.
 
 # Week 2
 ## Checkout dag 2
-Vandaag ben ik bezig geweest met form validatie en de structuur verbeteren van het form. Zie:
-Volgende keer ga ik verder met form validation. Mogelijk ga ik nog wat styling aanpassingen maken aan de radio buttons.
+Vandaag ben ik verder gegaan met styling van de form en bezig geweest met herstructurering van het formulier zelf qua verdeling van legends. Zo heb ik het formulier opgedeeld in verschillende groups i.p.v. een geheel.
+
+Daarnaast ben ik verder gegaan met de form validation in javascript, eerst met de combinatie van de javascript constraint API en native html errors en vervolgens begonnen met custom validation door middel van validity checks en eigen error messages.
