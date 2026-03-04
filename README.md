@@ -64,3 +64,8 @@ Hiermee geëxperimenteerd, blur of niet? Blijkt redelijk goed te werken maar nie
 
 Ook over user:valid en invalid geleerd, vervolgens toegepast en gestyled.
 <img width="267" height="266" alt="Screenshot 2026-03-02 at 15 37 27" src="https://github.com/user-attachments/assets/3bb3beda-a4f1-49bc-86f8-a0c7b6ad7b2b" />
+
+# Week 2
+## Checkout dag 2
+Vandaag ben ik bezig geweest met form validatie en de structuur verbeteren van het form. Zie:
+Volgende keer ga ik verder met form validation. Mogelijk ga ik nog wat styling aanpassingen maken aan de radio buttons.
