@@ -13,15 +13,15 @@
     </header>
     <main>
       <h2>Erfbelasting formulier</h2>
-      <form action="/formdeel2">
+      <form>
         <fieldset>
           <!-- Sectie 1: Gegevens van de overledene -->
           <fieldset class="personInfo">
             <!-- Vraag 1a: persoongegevens -->
             <legend>1. Persoonsgegevens overledene</legend>
-            <label for="firstName">Voorletter(s) </label>
+            <label for="firstName">Voorletter(s) <span>*</span> </label>
             <input type="text" id="firstName" name="voornaam" required />
-            <span></span>
+            <!-- <p class="error-message">Dit veld is verplicht!</p> -->
 
             <label for="prefix">Tussenvoegsel(s) </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
@@ -56,119 +56,135 @@
             <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
           </fieldset>
           <!-- Vraag 1b: vragen overledene -->
-          <fieldset class="optionalChoice">
-            <legend>
-              2. Was de overledene getrouwd of had de overledene een
-              geregistreerde partner op het moment van overlijden?
-            </legend>
-            <label class="radioWrapper">
-              <input type="radio" name="geregistreerdePartner" required />
-              Nee. Ga verder met vraag 3.
-            </label>
-            <label class="radioWrapper">
-              <input
-                type="radio"
-                name="geregistreerdePartner"
-                required
-                value="ja"
-              />
-              Ja
-            </label>
-          </fieldset>
-
-          <div class="optionalQuestion">
+          <fieldset>
+            <legend class="title">2. Partner- en huwelijksgegevens</legend>
             <fieldset class="optionalChoice">
               <legend>
-                Hadden de overledene en diens echtgenoot of geregistreerde
-                partner huwelijkse of partnerschapsvoorwaarden laten vastleggen
-                in een notariële akte?
+                Was de overledene getrouwd of had de overledene een
+                geregistreerde partner op het moment van overlijden?
               </legend>
-
               <label class="radioWrapper">
-                <input type="radio" name="notarieelVastleggen" />
-
-                Nee. Ga verder met vraag 3.</label
-              >
-
+                <input type="radio" name="geregistreerdePartner" required />
+                Nee
+              </label>
               <label class="radioWrapper">
-                <input type="radio" name="notarieelVastleggen" value="ja" />
-                Ja. Stuur een kopie van de akte mee met de aangifte.</label
-              >
-
-              <label for="deed" class="fileLabel"
-                >Upload akte
-                <input type="file" name="akte" id="deed" />
+                <input
+                  type="radio"
+                  name="geregistreerdePartner"
+                  required
+                  value="ja"
+                />
+                Ja
               </label>
             </fieldset>
+
             <div class="optionalQuestion">
-              <fieldset>
+              <fieldset class="optionalChoice">
                 <legend>
-                  Hadden de overledene en diens partner een finaal
-                  verrekenbeding?
+                  Hadden de overledene en diens echtgenoot of geregistreerde
+                  partner huwelijkse of partnerschapsvoorwaarden laten
+                  vastleggen in een notariële akte?
                 </legend>
 
                 <label class="radioWrapper">
-                  <input type="radio" name="finaalVerrekenbeding" />
+                  <input type="radio" name="notarieelVastleggen" />
+
                   Nee</label
                 >
 
                 <label class="radioWrapper">
-                  <input type="radio" name="finaalVerrekenbeding" />
-
-                  Ja</label
+                  <input type="radio" name="notarieelVastleggen" value="ja" />
+                  Ja. Stuur een kopie van de akte mee met de aangifte.</label
                 >
 
-                <label>Datum huwelijkse of partnerschapsvoorwaarden</label>
-                <input type="date" name="trouwDatum" />
+                <label for="deed" class="fileLabel"
+                  >Upload akte
+                  <input type="file" name="akte" id="deed" />
+                </label>
+              </fieldset>
+              <div class="optionalQuestion">
+                <fieldset>
+                  <legend>
+                    Hadden de overledene en diens partner een finaal
+                    verrekenbeding?
+                  </legend>
+
+                  <label class="radioWrapper">
+                    <input type="radio" name="finaalVerrekenbeding" />
+                    Nee</label
+                  >
+
+                  <label class="radioWrapper">
+                    <input type="radio" name="finaalVerrekenbeding" />
+
+                    Ja</label
+                  >
+
+                  <label for="marriageDate"
+                    >Datum huwelijkse of partnerschapsvoorwaarden</label
+                  >
+                  <input type="date" id="marriageDate" name="trouwDatum" />
+                </fieldset>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>3. Testamentgegevens</legend>
+
+            <fieldset class="optionalChoice">
+              <legend>Had de overledene een testament?</legend>
+              <label class="radioWrapper">
+                <input type="radio" name="testament" required />
+                Nee. Ga verder met vraag 4.</label
+              >
+
+              <label class="radioWrapper">
+                <input type="radio" name="testament" value="ja" />
+                Ja</label
+              >
+            </fieldset>
+            <div class="optionalQuestion">
+              <fieldset>
+                <legend>
+                  Vul de gegevens in van de notaris die het testament heeft
+                  opgemaakt en de datum van het testament.
+                </legend>
+                <label for="protocolnumber">Protocolnummer notaris</label>
+                <input
+                  type="text"
+                  name="protocolnummer"
+                  id="protocolnumber"
+                  inputmode="numeric"
+                  minlength="6"
+                  maxlength="6"
+                  pattern="\d{6}"
+                />
+                <!-- title="Protocolnummer moet 6 cijfers zijn."  js? -->
+                <label for="firstNameNotary">Voorletter(s) </label>
+                <input
+                  type="text"
+                  id="firstNameNotary"
+                  name="voornaamNotaris"
+                />
+                <label for="prefixNotary">Tussenvoegsel(s) </label>
+                <input
+                  type="text"
+                  id="prefixNotary"
+                  name="tussenvoegselNotaris"
+                />
+                <label for="lastNameNotary">Achternaam</label>
+                <input
+                  type="text"
+                  id="lastNameNotary"
+                  name="achternaamNotaris"
+                />
+                <label for="testamentDate"
+                  >Datum van het testament of van de laatste wijziging</label
+                >
+                <input type="date" name="testamentDatum" id="testamentDate" />
               </fieldset>
             </div>
-          </div>
-          <fieldset class="optionalChoice">
-            <legend>3. Had de overledene een testament?</legend>
-
-            <label class="radioWrapper">
-              <input type="radio" name="testament" required />
-              Nee. Ga verder met vraag 4.</label
-            >
-
-            <label class="radioWrapper">
-              <input type="radio" name="testament" value="ja" />
-              Ja</label
-            >
           </fieldset>
-          <div class="optionalQuestion">
-            <fieldset>
-              <legend>
-                Vul de gegevens in van de notaris die het testament heeft
-                opgemaakt en de datum van het testament.
-              </legend>
-              <label for="protocolnumber">Protocolnummer notaris</label>
-              <input
-                type="text"
-                name="protocolnummer"
-                id="protocolnumber"
-                inputmode="numeric"
-                minlength="6"
-                maxlength="6"
-                pattern="\d{6}"
-              />
-              <!-- title="Protocolnummer moet 6 cijfers zijn."  js? -->
-              <label for="firstNameNotary">Voorletter(s) </label>
-              <input type="text" id="firstNameNotary" name="voornaamNotaris" />
-              <label for="prefixNotary">Tussenvoegsel(s) </label>
-              <input
-                type="text"
-                id="prefixNotary"
-                name="tussenvoegselNotaris"
-              />
-              <label for="lastNameNotary">Achternaam</label>
-              <input type="text" id="lastNameNotary" name="achternaamNotaris" />
-              <label for="testamentDate"
-                >Datum van het testament of van de laatste wijziging</label
-              >
-              <input type="date" name="testamentDatum" id="testamentDate" />
-            </fieldset>
-          </div>
         </fieldset>
         <button type="submit">Verstuur</button>
       </form>

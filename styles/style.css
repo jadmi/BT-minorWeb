@@ -70,6 +70,24 @@ fieldset {
   padding: 0.3rem;
 }
 
+fieldset fieldset fieldset legend {
+  color: black;
+  font-family: var(--headerFont);
+  font-size: var(--bodyFontsize);
+  margin-bottom: 0.5em;
+  display: flex;
+  padding-top: 0.5em;
+}
+
+/* legend > input:has([type="radio"]) {
+  color: black;
+  font-family: var(--bodyFont);
+  font-weight: 400;
+  font-size: var(--bodyFontsize);
+  margin-bottom: 0.5em;
+  display: flex;
+} */
+
 input {
   font-size: inherit;
   margin-bottom: 1em;
@@ -153,7 +171,8 @@ input[type="file"] {
 
 .fileLabel {
   color: #000000;
-  font-family: var(--bodyFont);
+  font-family: var(--headerFont);
+  font-weight: bold;
   margin-top: 1em;
 }
 
@@ -174,7 +193,6 @@ legend {
   color: #003082;
   padding-inline: 0;
   margin-bottom: 0.3em;
-  padding-top: 0.8em;
 }
 
 label {
@@ -215,4 +233,10 @@ Hulp van Vasilis */
 .optionalChoice:has([value="ja"]:checked) + .optionalQuestion,
 .radioWrapper:has([value="ja"]:checked) + .fileLabel {
   display: block;
+}
+
+span {
+  color: #003082;
+  color: red;
+  margin-left: 0.2em;
 }
