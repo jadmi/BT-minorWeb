@@ -7,9 +7,13 @@ const formGroup1 = document.querySelectorAll(".personInfo input");
 
 form.setAttribute("novalidate", true);
 
+// https://stackoverflow.com/questions/574904/get-next-previous-element-using-javascript
 function validateField(field) {
+  const errorMessage = field.nextElementSibling;
+
   if (!field.validity.valid) {
     console.log("field is invalid");
+    errorMessage.textContent = "Dit veld is verplicht!";
     return false;
   } else {
     return true;

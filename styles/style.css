@@ -76,7 +76,7 @@ fieldset fieldset fieldset legend {
   font-size: var(--bodyFontsize);
   margin-bottom: 0.5em;
   display: flex;
-  padding-top: 0.5em;
+  padding-top: 0.1em;
 }
 
 /* legend > input:has([type="radio"]) {
@@ -172,7 +172,6 @@ input[type="file"] {
 .fileLabel {
   color: #000000;
   font-family: var(--headerFont);
-  font-weight: bold;
   margin-top: 1em;
 }
 
@@ -215,6 +214,10 @@ button {
   display: flex;
 }
 
+input[type="date"] {
+  font-size: var(--bodyFontsize);
+}
+
 /* 
 input:focus:invalid {
   background-color: rebeccapurple;
@@ -235,8 +238,32 @@ Hulp van Vasilis */
   display: block;
 }
 
-span {
-  color: #003082;
-  color: red;
-  margin-left: 0.2em;
+.errorMessage:empty {
+  display: none;
+  background: red;
+}
+
+.errorMessage {
+  font-family: var(--headerFont);
+  color: rgb(204, 17, 17);
+  margin-top: -8px;
+  font-size: 0.85rem;
+}
+
+fieldset .optionalChoice {
+  padding: 0;
+}
+
+fieldset .optionalChoice legend,
+.optionalQuestion legend {
+  padding-bottom: 0.5em;
+  padding-top: 0.2em;
+}
+
+.optionalQuestion legend {
+  margin: 0;
+}
+
+.title {
+  margin-bottom: 0;
 }

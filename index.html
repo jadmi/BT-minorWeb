@@ -12,7 +12,7 @@
       <h1>Dit is een schoolproject!</h1>
     </header>
     <main>
-      <h2>Erfbelasting formulier</h2>
+      <!-- <h2>Erfbelasting formulier</h2> -->
       <form>
         <fieldset>
           <!-- Sectie 1: Gegevens van de overledene -->
@@ -21,12 +21,13 @@
             <legend>1. Persoonsgegevens overledene</legend>
             <label for="firstName">Voorletter(s) <span>*</span> </label>
             <input type="text" id="firstName" name="voornaam" required />
-            <!-- <p class="error-message">Dit veld is verplicht!</p> -->
+            <p class="errorMessage" aria-live="polite"></p>
 
             <label for="prefix">Tussenvoegsel(s) </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
             <label for="lastName">Achternaam</label>
             <input type="text" id="lastName" name="achternaam" required />
+            <p class="errorMessage" aria-live="polite"></p>
             <label for="bsnNumber">Bsn overledene </label>
             <input
               type="text"
@@ -38,6 +39,7 @@
               pattern="\d{8,9}"
               required
             />
+            <p class="errorMessage" aria-live="polite"></p>
             <!-- title="BSN
                 moet
                 9
@@ -53,6 +55,7 @@
               min="2026-02-17"
               max="2027-10-17"
             />
+            <p class="errorMessage" aria-live="polite"></p>
             <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
           </fieldset>
           <!-- Vraag 1b: vragen overledene -->
@@ -129,13 +132,13 @@
             </div>
           </fieldset>
           <fieldset>
-            <legend>3. Testamentgegevens</legend>
+            <legend class="title">3. Testamentgegevens</legend>
 
             <fieldset class="optionalChoice">
               <legend>Had de overledene een testament?</legend>
               <label class="radioWrapper">
                 <input type="radio" name="testament" required />
-                Nee. Ga verder met vraag 4.</label
+                Nee</label
               >
 
               <label class="radioWrapper">
