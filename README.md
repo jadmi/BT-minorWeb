@@ -39,7 +39,7 @@ https://github.com/user-attachments/assets/1134d2f0-fbbb-460e-881d-6d39f27830e2
 
 # Week 2
 ## Checkout dag 1
-Bezig geweest met styling van form, wat responsiveness. Verder form validation ontdekken, wat is er mogelijk, hoe werken de default constraints?
+Bezig geweest met styling van form, responsiveness. Verder form validation ontdekken, wat is er mogelijk, hoe werken de default constraints?
 
 ```css
 const bsn = document.getElementById("bsnNumber");
@@ -66,7 +66,60 @@ Ook over user:valid en invalid geleerd, vervolgens toegepast en gestyled.
 <img width="267" height="266" alt="Screenshot 2026-03-02 at 15 37 27" src="https://github.com/user-attachments/assets/3bb3beda-a4f1-49bc-86f8-a0c7b6ad7b2b" />
 
 # Week 2
-## Checkout dag 2
-Vandaag ben ik verder gegaan met styling van de form en bezig geweest met herstructurering van het formulier zelf qua verdeling van legends. Zo heb ik het formulier opgedeeld in verschillende groups i.p.v. een geheel.
+## Checkout dag 2 + voortgang
+Vandaag ben ik verder gegaan met styling van de form en bezig geweest met herstructurering van het formulier zelf qua verdeling van legends. Zo heb ik het formulier opgedeeld in verschillende groups i.p.v. één geheel en de vragen hetzelfde gestyled zodat de vragen een zwarte kleur hebben en de group titels blauw zijn.
 
 Daarnaast ben ik verder gegaan met de form validation in javascript, eerst met de combinatie van de javascript constraint API en native html errors en vervolgens begonnen met custom validation door middel van validity checks en eigen error messages.
+
+```js
+const form = document.querySelector("form");
+const formGroup1 = document.querySelectorAll(".personInfo input");
+
+form.setAttribute("novalidate", true);
+
+function validateField(field) {
+  if (!field.validity.valid) {
+    console.log("field is invalid");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let isValid = true;
+
+  const fields = formGroup1;
+  fields.forEach((field) => {
+    console.log(`Checking ${field.name}`);
+    const fieldValid = validateField(field);
+    if (!fieldValid) {
+      isValid = false;
+    } else {
+      console.log("valide veld");
+    }
+  });
+
+  if (isValid) {
+    console.log("submitting");
+  } else {
+    console.log("error");
+  }
+});
+```
+
+
+
+
+https://github.com/user-attachments/assets/9b1ca443-b8c8-4c39-bf49-f2482b22ceb3
+
+
+
+
+
+
+Tot slot ben ik van plan om toch de styling om te gooien, ik heb namelijk last van problemen met contrast op de gele achtergrond. Ik ga het toch op dezelfde manier als NS aanpakken, witte achtergrond met hinten van geel.
+
+
