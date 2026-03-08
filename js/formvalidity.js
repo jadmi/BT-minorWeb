@@ -4,6 +4,8 @@
 
 const form = document.querySelector("form");
 const formGroup1 = document.querySelectorAll(".personInfo input");
+const fileInput = document.querySelector("#deed");
+const fileName = document.querySelector("#fileName");
 
 form.setAttribute("novalidate", true);
 
@@ -57,3 +59,7 @@ form.addEventListener("submit", function (e) {
 //   event.preventDefault();
 //   console.log("Form wordt niet verzonden");
 // });
+
+fileInput.addEventListener("change", () => {
+  fileName.textContent = fileInput.files[0].name;
+});

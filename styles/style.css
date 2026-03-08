@@ -1,11 +1,17 @@
 @font-face {
   font-family: "headerFont";
   src: url("../fonts/nssans-bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "bodyFont";
   src: url("../fonts/nssans-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* ====================== */
@@ -15,10 +21,12 @@
 html {
   --headerFont: "headerFont", Helvetica, Arial, sans-serif;
   --bodyFont: "bodyFont", Helvetica, Arial, sans-serif;
-  --bodyFontsize: clamp(0.95rem, 0.918rem + 0.16vw, 1.05rem);
-  --headerFontsize: clamp(1rem, 0.952rem + 0.24vw, 1.15rem);
+  --bodyFontsize: 1.1rem;
+  --headerFontsize: 1.2rem;
   --radioSize: clamp(17px, 2vw, 20px);
   --nsBlue: #0063d3;
+  --nsYellow: rgb(255, 201, 23);
+  --nsButtonBlue: rgb(0, 48, 130);
 }
 
 /* https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css  */
@@ -36,24 +44,40 @@ body {
 /* General styling */
 /* ====================== */
 
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 1.5rem;
+}
+
 h1 {
   text-align: center;
-  color: red;
+  font-family: var(--headerFont);
+  color: #003082;
+  padding: 1em;
+  margin: 0;
+  font-size: 1.4rem;
+  background-color: var(--nsYellow);
+  width: 100%;
 }
 
 h2 {
-  margin: 1rem;
+  font-family: var(--headerFont);
+  color: #003082;
+  font-size: clamp(1.4rem, 1.3429rem + 0.2857vw, 1.6rem);
+  padding-bottom: 0.8em;
+  border-bottom: 4px solid var(--nsYellow);
+  text-align: left;
+  width: fit-content;
 }
 
 /* ====================== */
-/* Form styling */
+/* General form styling */
 /* ====================== */
 
 form {
   padding: 0.5rem;
-  margin: 1rem;
   border-radius: 6px;
-  background-color: #ffc916;
   max-width: 550px;
 }
 
@@ -63,20 +87,125 @@ form {
     flex-direction: column;
     align-items: center;
   }
+  .headerContainer {
+    margin: 0;
+    align-items: center;
+  }
 }
 
 fieldset {
   border: none;
   padding: 0.3rem;
+  padding-bottom: 1em;
+}
+
+fieldset:last-of-type {
+  padding-bottom: 0.5em;
 }
 
 fieldset fieldset fieldset legend {
   color: black;
+  font-family: var(--bodyFont);
+  font-size: var(--bodyFontsize);
+  padding-bottom: 1.5em;
+  padding-top: 1em;
+  display: flex;
+}
+
+.optionalChoice,
+.nestedFieldset {
+  padding: 0;
+  margin: 0;
+}
+
+legend {
   font-family: var(--headerFont);
+  font-size: var(--headerFontsize);
+  color: #003082;
+  padding-inline: 0;
+}
+
+.nestedLegend {
+  padding-top: 0.5em;
+}
+
+.title {
+  padding-bottom: 0.2em;
+}
+
+label {
+  color: black;
+  font-family: var(--bodyFont);
   font-size: var(--bodyFontsize);
   margin-bottom: 0.5em;
   display: flex;
-  padding-top: 0.1em;
+}
+
+.personInfo label {
+  padding-top: 0.4em;
+}
+
+.fileLabel {
+  color: var(--nsButtonBlue);
+  background-color: var(--nsYellow);
+  font-family: var(--headerFont);
+  font-weight: 700;
+  margin-top: 1em;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 6px;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgb(228, 181, 25);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.fileLabel div {
+  font-family: var(--bodyFont);
+  font-weight: 500;
+  display: flex;
+  gap: 0.5em;
+}
+
+#fileName {
+  font-family: var(--bodyFont);
+  font-size: var(--bodyFontsize);
+}
+
+.marriageDiv {
+  padding-top: 0.5em;
+}
+
+span {
+  color: rgb(255, 0, 0);
+  margin-left: 0.1em;
+}
+
+/* styling van ns site */
+button {
+  font-family: var(--headerFont);
+  color: white;
+  background-color: var(--nsBlue);
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 0 -0.125rem 0 #004ba0;
+  padding: 0.625rem 1.125rem;
+  display: flex;
+  margin-left: 0.7rem;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 /* legend > input:has([type="radio"]) {
@@ -88,11 +217,15 @@ fieldset fieldset fieldset legend {
   display: flex;
 } */
 
+/* ====================== */
+/*    Input styling       */
+/* ====================== */
+
 input {
   font-size: inherit;
   margin-bottom: 1em;
   width: 100%;
-  padding: clamp(6px, 2vw, 9px);
+  padding: clamp(8px, 2vw, 11px);
   outline: 0;
   border-radius: 3px;
   border: 1px solid #85868a;
@@ -106,18 +239,14 @@ input:focus {
     0 2px 4px rgba(0, 0, 0, 0.03),
     0 4px 8px rgba(0, 0, 0, 0.03),
     0 8px 16px rgba(0, 0, 0, 0.03);
-  caret-color: var(--nsBlue);
+  caret-color: black;
 }
 
 /* https://www.youtube.com/watch?v=awNYtIAu6pI */
+
 input:user-valid {
   outline: 2px solid rgb(24, 166, 24);
 }
-
-/* input:user-valid + span::before {
-  content: "✓";
-  color: green;
-} */
 
 input:user-invalid {
   outline: 2px solid rgb(212, 60, 60);
@@ -136,14 +265,11 @@ input[type="radio"]:user-invalid {
 /* 
 https://stackoverflow.com/questions/44560597/flexbox-issue-while-aligning-radio-button */
 input[type="radio"] {
-  margin: 0;
+  display: none;
+  /* margin: 0;
   height: var(--radioSize);
   width: var(--radioSize);
-  flex-shrink: 0;
-}
-
-input[type="radio"]:checked {
-  accent-color: rgb(0, 168, 137);
+  flex-shrink: 0; */
 }
 
 input[type="radio"]:focus {
@@ -156,23 +282,35 @@ input[type="radio"]:focus-visible {
 }
 
 .radioWrapper {
+  padding: 1.1em;
+  border: 1px solid #1739bf;
+  color: black;
   gap: 0.5em;
+  border-radius: 3px;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    outline: 1px solid #1739bf;
+  }
 }
 
 .radioWrapper + .radioWrapper {
   margin-top: 1em;
 }
 
-input[type="file"] {
-  border: none;
-  padding: 0;
-  margin-bottom: 0;
+.radioWrapper:has(input[type="radio"]:checked) {
+  outline: 1px solid #1739bf;
+  background-color: #f2f8ff;
+  font-weight: bold;
 }
 
-.fileLabel {
-  color: #000000;
-  font-family: var(--headerFont);
-  margin-top: 1em;
+input[type="file"] {
+  display: none;
+}
+
+input[type="file"] button {
+  padding: 1em;
 }
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::file-selector-button */
@@ -186,36 +324,9 @@ input::file-selector-button {
   margin-top: 0.5em;
 }
 
-legend {
-  font-family: var(--headerFont);
-  font-size: var(--headerFontsize);
-  color: #003082;
-  padding-inline: 0;
-  margin-bottom: 0.3em;
-}
-
-label {
-  color: black;
-  font-family: var(--bodyFont);
-  font-weight: 400;
-  font-size: var(--bodyFontsize);
-  margin-bottom: 0.5em;
-  display: flex;
-}
-
-/* styling van ns site */
-button {
-  color: white;
-  background-color: var(--nsBlue);
-  border: none;
-  border-radius: 4px;
-  box-shadow: inset 0 -0.125rem 0 #004ba0;
-  padding: 0.625rem 1.125rem;
-  display: flex;
-}
-
 input[type="date"] {
   font-size: var(--bodyFontsize);
+  color: rgb(51, 50, 50);
 }
 
 /* 
@@ -229,14 +340,20 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:checked
 
 Hulp van Vasilis */
 .optionalChoice + .optionalQuestion,
-.radioWrapper + .fileLabel {
+.radioWrapper + .fileLabel,
+.marriageDiv {
   display: none;
 }
 
 .optionalChoice:has([value="ja"]:checked) + .optionalQuestion,
-.radioWrapper:has([value="ja"]:checked) + .fileLabel {
+.radioWrapper:has([value="ja"]:checked) + .fileLabel,
+.radioWrapper:has([value="ja"]:checked) + .marriageDiv {
   display: block;
 }
+
+/* ====================== */
+/*    Error styling       */
+/* ====================== */
 
 .errorMessage:empty {
   display: none;
@@ -248,22 +365,4 @@ Hulp van Vasilis */
   color: rgb(204, 17, 17);
   margin-top: -8px;
   font-size: 0.85rem;
-}
-
-fieldset .optionalChoice {
-  padding: 0;
-}
-
-fieldset .optionalChoice legend,
-.optionalQuestion legend {
-  padding-bottom: 0.5em;
-  padding-top: 0.2em;
-}
-
-.optionalQuestion legend {
-  margin: 0;
-}
-
-.title {
-  margin-bottom: 0;
 }

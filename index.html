@@ -12,20 +12,43 @@
       <h1>Dit is een schoolproject!</h1>
     </header>
     <main>
+      <div class="headerContainer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.0"
+          width="80"
+          height="80"
+          viewBox="-2.04189744 -2.04189744 178.37648488 72.14704288"
+          id="svg26940"
+          aria-hidden="true"
+        >
+          <path
+            d="M 76.19003,32.7088 C 72.73763,29.33945 68.00393,27.23954 62.8194,27.23954 L 26.08874,27.23954 L 39.67292,13.61977 L 74.23248,13.61977 C 75.69174,13.6435 77.05609,14.28415 78.01707,15.24513 L 98.07894,35.36632 C 101.53134,38.7238 106.25317,40.83558 111.47329,40.83558 L 148.23955,40.83558 L 134.63165,54.45535 L 100.10767,54.45535 C 98.62468,54.40789 97.28406,53.77911 96.31122,52.78254 L 76.19003,32.7088 z M 86.68959,62.43976 C 90.10639,65.89216 94.85196,68.06325 100.10767,68.06325 L 140.23141,68.06325 L 174.29269,34.03756 L 140.23141,0 L 121.00001,0 L 148.23955,27.23954 L 111.47329,27.23954 C 110.0259,27.23954 108.67351,26.65821 107.7243,25.73282 L 87.6387,5.64723 C 84.19817,2.15924 79.46447,0.01187 74.23248,0 L 34.04952,0 L 0,34.03756 L 34.04952,68.06325 L 53.29268,68.06325 L 26.08874,40.83558 L 62.8194,40.83558 C 64.27866,40.83558 65.59556,41.41691 66.5684,42.36602 L 86.68959,62.43976"
+            id="path25442"
+            style="
+              fill: #000066;
+              fill-opacity: 1;
+              fill-rule: evenodd;
+              stroke: none;
+            "
+          ></path>
+        </svg>
+        <h2>Aangifte erfbelasting</h2>
+      </div>
       <!-- <h2>Erfbelasting formulier</h2> -->
       <form>
         <fieldset>
           <!-- Sectie 1: Gegevens van de overledene -->
           <fieldset class="personInfo">
             <!-- Vraag 1a: persoongegevens -->
-            <legend>1. Persoonsgegevens overledene</legend>
-            <label for="firstName">Voorletter(s) <span>*</span> </label>
+            <legend class="title">1. Persoonsgegevens overledene</legend>
+            <label for="firstName">Voorletter(s) </label>
             <input type="text" id="firstName" name="voornaam" required />
             <p class="errorMessage" aria-live="polite"></p>
 
             <label for="prefix">Tussenvoegsel(s) </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
-            <label for="lastName">Achternaam</label>
+            <label for="lastName">Achternaam </label>
             <input type="text" id="lastName" name="achternaam" required />
             <p class="errorMessage" aria-live="polite"></p>
             <label for="bsnNumber">Bsn overledene </label>
@@ -46,7 +69,7 @@
                 cijfers
                 zijn.
                 " -->
-            <label for="deceaseDate">Overlijdensdatum</label>
+            <label for="deceaseDate">Overlijdensdatum </label>
             <input
               type="date"
               id="deceaseDate"
@@ -64,7 +87,9 @@
             <fieldset class="optionalChoice">
               <legend>
                 Was de overledene getrouwd of had de overledene een
-                geregistreerde partner op het moment van overlijden?
+                geregistreerde partner op het moment van overlijden?<span
+                  >*</span
+                >
               </legend>
               <label class="radioWrapper">
                 <input type="radio" name="geregistreerdePartner" required />
@@ -100,14 +125,41 @@
                   Ja. Stuur een kopie van de akte mee met de aangifte.</label
                 >
 
-                <label for="deed" class="fileLabel"
-                  >Upload akte
-                  <input type="file" name="akte" id="deed" />
+                <label for="deed" class="fileLabel">
+                  <div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 15C3 17.8284 3 19.2426 3.87868 20.1213C4.75736 21 6.17157 21 9 21H15C17.8284 21 19.2426 21 20.1213 20.1213C21 19.2426 21 17.8284 21 15"
+                        stroke="#003082"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 16V3M12 3L16 7.375M12 3L8 7.375"
+                        stroke="#003082"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    Upload akte
+                    <input type="file" name="akte" id="deed" />
+                  </div>
                 </label>
+                <p id="fileName"></p>
               </fieldset>
+
               <div class="optionalQuestion">
-                <fieldset>
-                  <legend>
+                <fieldset class="nestedFieldset">
+                  <legend class="nestedLegend">
                     Hadden de overledene en diens partner een finaal
                     verrekenbeding?
                   </legend>
@@ -118,15 +170,20 @@
                   >
 
                   <label class="radioWrapper">
-                    <input type="radio" name="finaalVerrekenbeding" />
+                    <input
+                      type="radio"
+                      name="finaalVerrekenbeding"
+                      value="ja"
+                    />
 
                     Ja</label
                   >
-
-                  <label for="marriageDate"
-                    >Datum huwelijkse of partnerschapsvoorwaarden</label
-                  >
-                  <input type="date" id="marriageDate" name="trouwDatum" />
+                  <div class="marriageDiv">
+                    <label for="marriageDate"
+                      >Datum huwelijkse of partnerschapsvoorwaarden</label
+                    >
+                    <input type="date" id="marriageDate" name="trouwDatum" />
+                  </div>
                 </fieldset>
               </div>
             </div>
@@ -147,7 +204,7 @@
               >
             </fieldset>
             <div class="optionalQuestion">
-              <fieldset>
+              <fieldset class="nestedFieldset">
                 <legend>
                   Vul de gegevens in van de notaris die het testament heeft
                   opgemaakt en de datum van het testament.
