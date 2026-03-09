@@ -1,4 +1,5 @@
-# Dit is een school project!
+> [!CAUTION]
+> Dit is een schoolproject en heeft **geen enkele officiële relatie, samenwerking of goedkeuring** van de Belastingdienst of de Nederlandse Spoorwegen.
 
 # BT-minorWeb
 
