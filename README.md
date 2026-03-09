@@ -128,3 +128,13 @@ https://github.com/user-attachments/assets/54f81f89-5ca5-4ce1-bb05-260ca293b1d5
 Tot slot ben ik van plan om toch de styling om te gooien, ik heb namelijk last van problemen met contrast op de gele achtergrond. Ik ga het toch op dezelfde manier als NS aanpakken, witte achtergrond met hinten van geel.
 
 
+
+# Week 3
+## Vooraf
+Ik heb de styling omgegooid voor beter contrast en wat ik persoonlijk een flinke verbetering vind. Witte achtergrond, blauwe tekst en hinten van geel, verder radio buttons als echte buttons.
+
+<img width="300" height="300" alt="Screenshot 2026-03-09 at 21 43 59" src="https://github.com/user-attachments/assets/4a918acc-6220-4034-8748-4fa0cf7faca8" />
+
+
+## Checkout dag 1 
+Vandaag heb ik me volledig gestort op custom form validation, custom errors passend bij het veld, gelijk feedback als je een error verkeerd invult (samen met user valid/invalid). Nu ben ik bezig met details zoals error styling voor radio buttons. Morgen ga ik hiermee verder en ga ik hulp vragen over een aantal problemen waar ik niet uitkwam m.b.t de radio buttons.
