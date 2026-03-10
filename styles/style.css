@@ -108,7 +108,7 @@ fieldset fieldset fieldset legend {
   font-family: var(--bodyFont);
   font-size: var(--bodyFontsize);
   padding-bottom: 1.5em;
-  padding-top: 1em;
+  padding-top: 0.5em;
   display: flex;
 }
 
@@ -139,6 +139,11 @@ label {
   font-size: var(--bodyFontsize);
   margin-bottom: 0.5em;
   display: flex;
+}
+
+.personInfo,
+.partnerInfo {
+  margin-bottom: 1.8em;
 }
 
 .personInfo label {
@@ -228,12 +233,13 @@ input {
   padding: clamp(8px, 2vw, 11px);
   outline: 0;
   border-radius: 3px;
-  border: 1px solid #85868a;
+  border: none;
+  outline: 1px solid #85868a;
 }
 
 /* Kleuren van ns */
 input:focus {
-  border: 1px solid var(--nsBlue);
+  outline: 2px solid var(--nsBlue);
   box-shadow:
     0 0 0 1px var(--nsBlue),
     0 2px 4px rgba(0, 0, 0, 0.03),
@@ -242,24 +248,8 @@ input:focus {
   caret-color: black;
 }
 
-/* https://www.youtube.com/watch?v=awNYtIAu6pI */
-
-input:user-valid {
-  outline: 2px solid rgb(24, 166, 24);
-}
-
-input:user-invalid {
-  outline: 2px solid rgb(212, 60, 60);
-}
-
-input:user-valid:focus,
-input:user-invalid:focus {
-  outline: 1px solid var(--nsBlue);
-}
-
-input[type="radio"]:user-valid,
-input[type="radio"]:user-invalid {
-  outline: none;
+input:focus-within {
+  outline: 2px solid var(--nsBlue);
 }
 
 /* 
@@ -283,7 +273,7 @@ input[type="radio"]:focus-visible {
 
 .radioWrapper {
   padding: 1.1em;
-  border: 1px solid #1739bf;
+  outline: 1px solid #1739bf;
   color: black;
   gap: 0.5em;
   border-radius: 3px;
@@ -299,8 +289,52 @@ input[type="radio"]:focus-visible {
   margin-top: 1em;
 }
 
+input:user-valid {
+  outline: 2px solid rgb(24, 166, 24);
+  background-color: rgb(236 255 236);
+}
+
+/* input:user-valid:has(.errorMessage) {
+  .errorMessage: display none
+} */
+
+input:user-invalid {
+  outline: 2px solid rgb(212, 60, 60);
+  background-color: rgb(251 233 233);
+}
+
+input:user-valid:focus,
+input:user-invalid:focus {
+  outline: 2px solid var(--nsBlue);
+}
+
+input[type="date"]:user-invalid {
+  outline: 2px solid rgb(212, 60, 60);
+}
+
+.radioWrapper:has(input[type="radio"]:user-invalid) {
+  outline: 2px solid rgb(212, 60, 60);
+  background-color: rgb(251 233 233);
+}
+
+.radioWrapper:has(input[type="radio"]:user-valid) {
+  outline: 2px solid rgb(24, 166, 24);
+  background-color: rgb(217 241 217);
+}
+
+.radioWrapper:has(input[type="radio"]:focus-visible) {
+  outline: 2px solid var(--nsBlue);
+}
+
+.radioWrapper:has(input[type="radio"]:user-invalid:focus) {
+  outline: 2px solid var(--nsBlue);
+}
+.radioWrapper:has(input[type="radio"]:user-valid:focus) {
+  outline: 2px solid var(--nsBlue);
+}
+
 .radioWrapper:has(input[type="radio"]:checked) {
-  outline: 1px solid #1739bf;
+  outline: 2px solid #1739bf;
   background-color: #f2f8ff;
   font-weight: bold;
 }
@@ -346,8 +380,8 @@ Hulp van Vasilis */
 }
 
 .optionalChoice:has([value="ja"]:checked) + .optionalQuestion,
-.radioWrapper:has([value="ja"]:checked) + .fileLabel,
-.radioWrapper:has([value="ja"]:checked) + .marriageDiv {
+.radioWrapper:has([value="ja"]:checked) ~ .fileLabel,
+.radioWrapper:has([value="ja"]:checked) ~ .marriageDiv {
   display: block;
 }
 
@@ -355,14 +389,19 @@ Hulp van Vasilis */
 /*    Error styling       */
 /* ====================== */
 
-.errorMessage:empty {
-  display: none;
-  background: red;
-}
+/* https://www.youtube.com/watch?v=awNYtIAu6pI */
 
 .errorMessage {
   font-family: var(--headerFont);
   color: rgb(204, 17, 17);
   margin-top: -8px;
   font-size: 0.85rem;
+}
+
+.errorMessage:empty {
+  display: none;
+}
+
+.errorMessage.radio {
+  margin-top: 0;
 }

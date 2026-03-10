@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=h5qqmE83Tes
 
 const form = document.querySelector("form");
-const formGroup1 = document.querySelectorAll(".personInfo input");
+const formGroup1 = document.querySelectorAll("[required]");
 const fileInput = document.querySelector("#deed");
 const fileName = document.querySelector("#fileName");
 
@@ -11,16 +11,31 @@ form.setAttribute("novalidate", true);
 
 // https://stackoverflow.com/questions/574904/get-next-previous-element-using-javascript
 function validateField(field) {
-  const errorMessage = field.nextElementSibling;
+  const errorMessage =
+    field.type === "radio"
+      ? field.closest("fieldset").querySelector(".errorMessage")
+      : field.nextElementSibling;
 
   if (!field.validity.valid) {
-    console.log("field is invalid");
-    errorMessage.textContent = "Dit veld is verplicht!";
+    if (field.validity.patternMismatch || field.type === "radio") {
+      errorMessage.textContent = field.dataset.error;
+    } else {
+      errorMessage.textContent = "Dit veld is verplicht!";
+    }
     return false;
   } else {
+    console.log(field.name, errorMessage);
+
+    errorMessage.textContent = "";
     return true;
   }
 }
+
+form.querySelectorAll("input").forEach((input) => {
+  input.addEventListener("blur", () => {
+    validateField(input);
+  });
+});
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -29,20 +44,21 @@ form.addEventListener("submit", function (e) {
 
   const fields = formGroup1;
   fields.forEach((field) => {
-    console.log(`Checking ${field.name}`);
     const fieldValid = validateField(field);
     if (!fieldValid) {
       isValid = false;
-    } else {
-      console.log("valide veld");
     }
   });
 
   if (isValid) {
-    console.log("submitting");
+    form.reset();
   } else {
-    console.log("error");
+    form.querySelector(":invalid").focus();
   }
+});
+
+fileInput.addEventListener("change", () => {
+  fileName.textContent = fileInput.files[0].name;
 });
 
 // bsn.addEventListener("input", (event) => {
@@ -59,7 +75,3 @@ form.addEventListener("submit", function (e) {
 //   event.preventDefault();
 //   console.log("Form wordt niet verzonden");
 // });
-
-fileInput.addEventListener("change", () => {
-  fileName.textContent = fileInput.files[0].name;
-});

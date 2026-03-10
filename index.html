@@ -48,10 +48,13 @@
 
             <label for="prefix">Tussenvoegsel(s) </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
+            <p class="errorMessage" aria-live="polite"></p>
+
             <label for="lastName">Achternaam </label>
             <input type="text" id="lastName" name="achternaam" required />
             <p class="errorMessage" aria-live="polite"></p>
-            <label for="bsnNumber">Bsn overledene </label>
+
+            <label for="bsnNumber">BSN overledene </label>
             <input
               type="text"
               id="bsnNumber"
@@ -61,6 +64,7 @@
               maxlength="9"
               pattern="\d{8,9}"
               required
+              data-error="Vul een geldig BSN in van 8 of 9 cijfers."
             />
             <p class="errorMessage" aria-live="polite"></p>
             <!-- title="BSN
@@ -75,35 +79,35 @@
               id="deceaseDate"
               name="overlijdensDatum"
               required
-              min="2026-02-17"
-              max="2027-10-17"
+              min="2026-03-08"
+              max="2026-03-09"
+              data-error="De datum kan niet in de toekomst zijn."
             />
             <p class="errorMessage" aria-live="polite"></p>
             <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
           </fieldset>
           <!-- Vraag 1b: vragen overledene -->
-          <fieldset>
+          <fieldset class="partnerInfo">
             <legend class="title">2. Partner- en huwelijksgegevens</legend>
             <fieldset class="optionalChoice">
               <legend>
                 Was de overledene getrouwd of had de overledene een
-                geregistreerde partner op het moment van overlijden?<span
-                  >*</span
-                >
+                geregistreerde partner op het moment van overlijden?
               </legend>
               <label class="radioWrapper">
-                <input type="radio" name="geregistreerdePartner" required />
-                Nee
+                <input type="radio" name="geregistreerdePartner" value="ja" />
+                Ja
               </label>
               <label class="radioWrapper">
                 <input
                   type="radio"
                   name="geregistreerdePartner"
+                  data-error="Deze keuze is verplicht!"
                   required
-                  value="ja"
                 />
-                Ja
+                Nee
               </label>
+              <p class="errorMessage radio" aria-live="polite"></p>
             </fieldset>
 
             <div class="optionalQuestion">
@@ -113,16 +117,15 @@
                   partner huwelijkse of partnerschapsvoorwaarden laten
                   vastleggen in een notariële akte?
                 </legend>
+                <label class="radioWrapper">
+                  <input type="radio" name="notarieelVastleggen" value="ja" />
+                  Ja. Stuur een kopie van de akte mee met de aangifte.</label
+                >
 
                 <label class="radioWrapper">
                   <input type="radio" name="notarieelVastleggen" />
 
                   Nee</label
-                >
-
-                <label class="radioWrapper">
-                  <input type="radio" name="notarieelVastleggen" value="ja" />
-                  Ja. Stuur een kopie van de akte mee met de aangifte.</label
                 >
 
                 <label for="deed" class="fileLabel">
@@ -165,11 +168,6 @@
                   </legend>
 
                   <label class="radioWrapper">
-                    <input type="radio" name="finaalVerrekenbeding" />
-                    Nee</label
-                  >
-
-                  <label class="radioWrapper">
                     <input
                       type="radio"
                       name="finaalVerrekenbeding"
@@ -178,6 +176,12 @@
 
                     Ja</label
                   >
+
+                  <label class="radioWrapper">
+                    <input type="radio" name="finaalVerrekenbeding" />
+                    Nee</label
+                  >
+
                   <div class="marriageDiv">
                     <label for="marriageDate"
                       >Datum huwelijkse of partnerschapsvoorwaarden</label
@@ -193,15 +197,21 @@
 
             <fieldset class="optionalChoice">
               <legend>Had de overledene een testament?</legend>
-              <label class="radioWrapper">
-                <input type="radio" name="testament" required />
-                Nee</label
-              >
 
               <label class="radioWrapper">
                 <input type="radio" name="testament" value="ja" />
                 Ja</label
               >
+              <label class="radioWrapper">
+                <input
+                  type="radio"
+                  name="testament"
+                  required
+                  data-error="Deze keuze is verplicht!"
+                />
+                Nee</label
+              >
+              <p class="errorMessage radio" aria-live="polite"></p>
             </fieldset>
             <div class="optionalQuestion">
               <fieldset class="nestedFieldset">
@@ -218,8 +228,9 @@
                   minlength="6"
                   maxlength="6"
                   pattern="\d{6}"
+                  title="Protocolnummer moet 6 cijfers zijn."
                 />
-                <!-- title="Protocolnummer moet 6 cijfers zijn."  js? -->
+
                 <label for="firstNameNotary">Voorletter(s) </label>
                 <input
                   type="text"
