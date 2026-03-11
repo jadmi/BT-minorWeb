@@ -137,4 +137,8 @@ Ik heb de styling omgegooid voor beter contrast en wat ik persoonlijk een flinke
 
 
 ## Checkout dag 1 
-Vandaag heb ik me volledig gestort op custom form validation, custom errors passend bij het veld, gelijk feedback als je een error verkeerd invult (samen met user valid/invalid). Nu ben ik bezig met details zoals error styling voor radio buttons. Morgen ga ik hiermee verder en ga ik hulp vragen over een aantal problemen waar ik niet uitkwam m.b.t de radio buttons.
+Vandaag heb ik me volledig gestort op custom form validation, custom errors passend bij het veld, gelijk feedback als je een error verkeerd invult (samen met user valid/invalid). Nu ben ik bezig met details zoals error styling voor radio buttons. Geleerd over aria-live: polite. Morgen ga ik hiermee verder en ga ik hulp vragen over een aantal problemen waar ik niet uitkwam m.b.t de radio buttons. 
+
+
+## Checkout dag 2
+Vandaag heb ik me weer volledig gestort op custom form validation, ook voor radio buttons en accessible voor screenreaders. Geleerd over aria-describedby, blur, focus() en deze dus verwerkt in de validatie, verder verschillende javascript dingetjes.  
