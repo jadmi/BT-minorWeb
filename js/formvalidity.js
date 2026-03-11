@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=h5qqmE83Tes
 
 const form = document.querySelector("form");
-const formGroup1 = document.querySelectorAll("[required]");
+const input = document.querySelectorAll("input");
 const fileInput = document.querySelector("#deed");
 const fileName = document.querySelector("#fileName");
 
@@ -11,12 +11,17 @@ form.setAttribute("novalidate", true);
 
 // https://stackoverflow.com/questions/574904/get-next-previous-element-using-javascript
 function validateField(field) {
+  if (field.closest(".nestedFieldset")) return true;
+
   const errorMessage =
     field.type === "radio"
       ? field.closest("fieldset").querySelector(".errorMessage")
       : field.nextElementSibling;
 
   if (!field.validity.valid) {
+    field.classList.add("hasError");
+    field.setAttribute("aria-describedby", `${field.id}Error`);
+
     if (field.validity.patternMismatch || field.type === "radio") {
       errorMessage.textContent = field.dataset.error;
     } else {
@@ -24,17 +29,29 @@ function validateField(field) {
     }
     return false;
   } else {
-    console.log(field.name, errorMessage);
+    field.classList.remove("hasError");
+    field.removeAttribute("aria-describedby");
 
+    if (field.type === "radio") {
+      if (field.closest(".optionalQuestion")) return true; // skip radios inside optionalQuestion
+      if (field.closest(".nestedFieldset")) return true;
+    } else {
+      if (field.offsetParent === null) return true;
+    } // skip hidden/optional fields - // Claude gebruikt. prompt: how to skip hidden fields with      javascript? (offsetParent)
     errorMessage.textContent = "";
     return true;
   }
 }
 
-form.querySelectorAll("input").forEach((input) => {
-  input.addEventListener("blur", () => {
-    validateField(input);
-  });
+input.forEach((input) => {
+  if (input.type === "radio") {
+    input.addEventListener("change", () => {
+      validateField(input);
+    });
+  } else
+    input.addEventListener("blur", () => {
+      validateField(input);
+    });
 });
 
 form.addEventListener("submit", function (e) {
@@ -42,7 +59,7 @@ form.addEventListener("submit", function (e) {
 
   let isValid = true;
 
-  const fields = formGroup1;
+  const fields = input;
   fields.forEach((field) => {
     const fieldValid = validateField(field);
     if (!fieldValid) {
@@ -51,27 +68,13 @@ form.addEventListener("submit", function (e) {
   });
 
   if (isValid) {
-    form.reset();
+    console.log(submit);
   } else {
-    form.querySelector(":invalid").focus();
+    const firstInvalid = Array.from(fields).find((i) => !i.validity.valid); // Hulp van Victor
+    firstInvalid.focus();
   }
 });
 
 fileInput.addEventListener("change", () => {
   fileName.textContent = fileInput.files[0].name;
 });
-
-// bsn.addEventListener("input", (event) => {
-//   if (bsn.validity.valueMissing) {
-//     bsn.setCustomValidity("Dit veld is verplicht!");
-//   } else if (bsn.validity.patternMismatch) {
-//     bsn.setCustomValidity("Dit veld moet 8 of 9 cijfers bevatten.");
-//   } else {
-//     bsn.setCustomValidity("");
-//   }
-// });
-
-// form.addEventListener("submit", function (event) {
-//   event.preventDefault();
-//   console.log("Form wordt niet verzonden");
-// });

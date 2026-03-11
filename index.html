@@ -9,7 +9,8 @@
   </head>
   <body>
     <header>
-      <h1>Dit is een schoolproject!</h1>
+      <h1>LET OP!</h1>
+      <h2 class="warning">Dit is een schoolproject!</h2>
     </header>
     <main>
       <div class="headerContainer">
@@ -44,15 +45,15 @@
             <legend class="title">1. Persoonsgegevens overledene</legend>
             <label for="firstName">Voorletter(s) </label>
             <input type="text" id="firstName" name="voornaam" required />
-            <p class="errorMessage" aria-live="polite"></p>
+            <p class="errorMessage" aria-live="polite" id="firstNameError"></p>
 
             <label for="prefix">Tussenvoegsel(s) </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
-            <p class="errorMessage" aria-live="polite"></p>
+            <p class="errorMessage" aria-live="polite" id="prefixError"></p>
 
             <label for="lastName">Achternaam </label>
             <input type="text" id="lastName" name="achternaam" required />
-            <p class="errorMessage" aria-live="polite"></p>
+            <p class="errorMessage" aria-live="polite" id="lastNameError"></p>
 
             <label for="bsnNumber">BSN overledene </label>
             <input
@@ -66,7 +67,7 @@
               required
               data-error="Vul een geldig BSN in van 8 of 9 cijfers."
             />
-            <p class="errorMessage" aria-live="polite"></p>
+            <p class="errorMessage" aria-live="polite" id="bsnNumberError"></p>
             <!-- title="BSN
                 moet
                 9
@@ -83,10 +84,16 @@
               max="2026-03-09"
               data-error="De datum kan niet in de toekomst zijn."
             />
-            <p class="errorMessage" aria-live="polite"></p>
+            <p
+              class="errorMessage"
+              aria-live="polite"
+              id="deceaseDateError"
+            ></p>
             <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
           </fieldset>
-          <!-- Vraag 1b: vragen overledene -->
+
+          <!-- Vraag 2: partnergegevens -->
+
           <fieldset class="partnerInfo">
             <legend class="title">2. Partner- en huwelijksgegevens</legend>
             <fieldset class="optionalChoice">
@@ -95,7 +102,12 @@
                 geregistreerde partner op het moment van overlijden?
               </legend>
               <label class="radioWrapper">
-                <input type="radio" name="geregistreerdePartner" value="ja" />
+                <input
+                  type="radio"
+                  name="geregistreerdePartner"
+                  value="ja"
+                  aria-describedby="partnerError"
+                />
                 Ja
               </label>
               <label class="radioWrapper">
@@ -104,10 +116,15 @@
                   name="geregistreerdePartner"
                   data-error="Deze keuze is verplicht!"
                   required
+                  aria-describedby="partnerError"
                 />
                 Nee
               </label>
-              <p class="errorMessage radio" aria-live="polite"></p>
+              <p
+                class="errorMessage radio"
+                aria-live="polite"
+                id="partnerError"
+              ></p>
             </fieldset>
 
             <div class="optionalQuestion">
@@ -193,6 +210,8 @@
             </div>
           </fieldset>
           <fieldset>
+            <!-- Vraag 3: Testamentgegevens -->
+
             <legend class="title">3. Testamentgegevens</legend>
 
             <fieldset class="optionalChoice">
@@ -213,6 +232,7 @@
               >
               <p class="errorMessage radio" aria-live="polite"></p>
             </fieldset>
+
             <div class="optionalQuestion">
               <fieldset class="nestedFieldset">
                 <legend>
@@ -223,7 +243,7 @@
                 <input
                   type="text"
                   name="protocolnummer"
-                  id="protocolnumber"
+                  id="protocolnumberNotary"
                   inputmode="numeric"
                   minlength="6"
                   maxlength="6"

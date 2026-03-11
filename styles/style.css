@@ -14,6 +14,9 @@
   font-display: swap;
 }
 
+/* input:not(.custom-error):user-invalid) */
+/* input heeft een error class */
+
 /* ====================== */
 /* CSS Vars */
 /* ====================== */
@@ -53,12 +56,35 @@ body {
 h1 {
   text-align: center;
   font-family: var(--headerFont);
+  color: white;
+  padding: 0.4em;
+  margin: 0;
+  font-size: 1.2rem;
+  background-color: red;
+  width: 100%;
+}
+
+.warning {
+  text-align: center;
+  font-family: var(--headerFont);
   color: #003082;
   padding: 1em;
   margin: 0;
   font-size: 1.4rem;
   background-color: var(--nsYellow);
   width: 100%;
+}
+
+header div {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
+header h2 {
+  color: red;
+  padding: 0;
+  margin: 0;
 }
 
 h2 {
@@ -255,8 +281,10 @@ input:focus-within {
 /* 
 https://stackoverflow.com/questions/44560597/flexbox-issue-while-aligning-radio-button */
 input[type="radio"] {
-  display: none;
-  /* margin: 0;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0; /* margin: 0;
   height: var(--radioSize);
   width: var(--radioSize);
   flex-shrink: 0; */
@@ -273,7 +301,7 @@ input[type="radio"]:focus-visible {
 
 .radioWrapper {
   padding: 1.1em;
-  outline: 1px solid #1739bf;
+  outline: 1px solid #85868a;
   color: black;
   gap: 0.5em;
   border-radius: 3px;
@@ -317,13 +345,15 @@ input[type="date"]:user-invalid {
   background-color: rgb(251 233 233);
 }
 
-.radioWrapper:has(input[type="radio"]:user-valid) {
+/* .radioWrapper:has(input[type="radio"]:user-valid) {
   outline: 2px solid rgb(24, 166, 24);
   background-color: rgb(217 241 217);
-}
+} */
 
 .radioWrapper:has(input[type="radio"]:focus-visible) {
-  outline: 2px solid var(--nsBlue);
+  outline: 2px solid #1739bf;
+  background-color: #f2f8ff;
+  font-weight: bold;
 }
 
 .radioWrapper:has(input[type="radio"]:user-invalid:focus) {
@@ -404,4 +434,19 @@ Hulp van Vasilis */
 
 .errorMessage.radio {
   margin-top: 0;
+}
+
+input.hasError {
+  outline: 2px solid rgb(212, 60, 60);
+  background-color: rgb(251 233 233);
+}
+
+.radioWrapper:has(input[type="radio"]:focus-visible) {
+  outline: 2px solid var(--nsBlue);
+}
+
+.nestedFieldset input:user-invalid,
+.nestedFieldset input:user-valid {
+  outline: 1px solid #85868a;
+  background-color: white;
 }
