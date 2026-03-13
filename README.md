@@ -142,3 +142,11 @@ Vandaag heb ik me volledig gestort op custom form validation, custom errors pass
 
 ## Checkout dag 2
 Vandaag heb ik me weer volledig gestort op custom form validation, ook voor radio buttons en accessible voor screenreaders. Geleerd over aria-describedby, blur, focus() en deze dus verwerkt in de validatie, verder verschillende javascript dingetjes.  
+
+# Voortgang week 3
+
+
+https://github.com/user-attachments/assets/04f5793c-60da-4978-99df-865ee4ba51fd
+
+
+Deze week styling helemaal omgegooid, vervolgens gedoken in custom form validation en wat er allemaal bij komt kijken qua toegankelijkheid. 
