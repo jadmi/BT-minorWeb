@@ -126,7 +126,7 @@ fieldset {
 }
 
 fieldset:last-of-type {
-  padding-bottom: 0.5em;
+  padding-bottom: 1.5em;
 }
 
 fieldset fieldset fieldset legend {
@@ -134,7 +134,7 @@ fieldset fieldset fieldset legend {
   font-family: var(--bodyFont);
   font-size: var(--bodyFontsize);
   padding-bottom: 1.5em;
-  padding-top: 0.5em;
+  padding-top: 1.5em;
   display: flex;
 }
 
@@ -429,7 +429,7 @@ Hulp van Vasilis */
 }
 
 .errorMessage:empty {
-  display: none;
+  margin: 0;
 }
 
 .errorMessage.radio {

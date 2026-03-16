@@ -6,11 +6,13 @@ const form = document.querySelector("form");
 const input = document.querySelectorAll("input");
 const fileInput = document.querySelector("#deed");
 const fileName = document.querySelector("#fileName");
+const today = new Date().toISOString().split("T")[0];
 
 form.setAttribute("novalidate", true);
 
 // https://stackoverflow.com/questions/574904/get-next-previous-element-using-javascript
 function validateField(field) {
+  const label = document.querySelector(`label[for="${field.id}"]`);
   if (field.closest(".nestedFieldset")) return true;
 
   const errorMessage =
@@ -25,7 +27,7 @@ function validateField(field) {
     if (field.validity.patternMismatch || field.type === "radio") {
       errorMessage.textContent = field.dataset.error;
     } else {
-      errorMessage.textContent = "Dit veld is verplicht!";
+      errorMessage.textContent = label.textContent + " is verplicht!";
     }
     return false;
   } else {
@@ -77,4 +79,8 @@ form.addEventListener("submit", function (e) {
 
 fileInput.addEventListener("change", () => {
   fileName.textContent = fileInput.files[0].name;
+});
+
+document.querySelectorAll('input[type="date"]').forEach((input) => {
+  input.max = today;
 });

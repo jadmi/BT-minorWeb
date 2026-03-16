@@ -44,7 +44,14 @@
             <!-- Vraag 1a: persoongegevens -->
             <legend class="title">1. Persoonsgegevens overledene</legend>
             <label for="firstName">Voorletter(s) </label>
-            <input type="text" id="firstName" name="voornaam" required />
+            <input
+              type="text"
+              id="firstName"
+              name="voornaam"
+              required
+              pattern="^[A-Za-z.]+$"
+              data-error="Vul alleen letters bij voorletters!"
+            />
             <p class="errorMessage" aria-live="polite" id="firstNameError"></p>
 
             <label for="prefix">Tussenvoegsel(s) </label>
@@ -52,7 +59,14 @@
             <p class="errorMessage" aria-live="polite" id="prefixError"></p>
 
             <label for="lastName">Achternaam </label>
-            <input type="text" id="lastName" name="achternaam" required />
+            <input
+              type="text"
+              id="lastName"
+              name="achternaam"
+              required
+              pattern="^[A-Za-z.]+$"
+              data-error="Vul alleen letters in als achternaam!"
+            />
             <p class="errorMessage" aria-live="polite" id="lastNameError"></p>
 
             <label for="bsnNumber">BSN overledene </label>
@@ -65,7 +79,7 @@
               maxlength="9"
               pattern="\d{8,9}"
               required
-              data-error="Vul een geldig BSN in van 8 of 9 cijfers."
+              data-error="Vul een geldig BSN in van 8 of 9 cijfers!"
             />
             <p class="errorMessage" aria-live="polite" id="bsnNumberError"></p>
             <!-- title="BSN
@@ -80,8 +94,7 @@
               id="deceaseDate"
               name="overlijdensDatum"
               required
-              min="2026-03-08"
-              max="2026-03-09"
+              min="2026-01-01"
               data-error="De datum kan niet in de toekomst zijn."
             />
             <p
@@ -239,7 +252,7 @@
                   Vul de gegevens in van de notaris die het testament heeft
                   opgemaakt en de datum van het testament.
                 </legend>
-                <label for="protocolnumber">Protocolnummer notaris</label>
+                <label for="protocolnumberNotary">Protocolnummer notaris</label>
                 <input
                   type="text"
                   name="protocolnummer"
@@ -256,6 +269,8 @@
                   type="text"
                   id="firstNameNotary"
                   name="voornaamNotaris"
+                  pattern="^[A-Za-z.]+$"
+                  data-error="Vul alleen letters bij voorletters!"
                 />
                 <label for="prefixNotary">Tussenvoegsel(s) </label>
                 <input
@@ -268,6 +283,8 @@
                   type="text"
                   id="lastNameNotary"
                   name="achternaamNotaris"
+                  pattern="^[A-Za-z.]+$"
+                  data-error="Vul alleen letters bij de notaris achternaam!"
                 />
                 <label for="testamentDate"
                   >Datum van het testament of van de laatste wijziging</label
