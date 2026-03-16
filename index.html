@@ -38,6 +38,17 @@
       </div>
       <!-- <h2>Erfbelasting formulier</h2> -->
       <form>
+        <div
+          id="errorSummary"
+          class="errorSummary"
+          tabindex="-1"
+          hidden
+          aria-labelledby="errorSummaryTitle"
+        >
+          <h2 id="errorSummaryTitle">Invoerfouten gevonden in het formulier</h2>
+          <p>Verbeter de fouten voor u verdergaat.</p>
+          <ul id="errorSummaryList"></ul>
+        </div>
         <fieldset>
           <!-- Sectie 1: Gegevens van de overledene -->
           <fieldset class="personInfo">
@@ -127,7 +138,7 @@
                 <input
                   type="radio"
                   name="geregistreerdePartner"
-                  data-error="Deze keuze is verplicht!"
+                  data-error="Partnergegevens is verplicht!"
                   required
                   aria-describedby="partnerError"
                 />
@@ -239,7 +250,7 @@
                   type="radio"
                   name="testament"
                   required
-                  data-error="Deze keuze is verplicht!"
+                  data-error="Testamentgegevens is verplicht!"
                 />
                 Nee</label
               >
@@ -292,6 +303,71 @@
                 <input type="date" name="testamentDatum" id="testamentDate" />
               </fieldset>
             </div>
+          </fieldset>
+          <fieldset>
+            <legend class="title">4. Gegevens gemachtigde</legend>
+            <fieldset id="representativeGroup">
+              <legend class="pattern">
+                Vul 1 van de 3 in: het bsn of RSIN van de gemachtigde, het
+                beconnummer van de adviseur of het protocolnummer van de notaris
+              </legend>
+              <p
+                class="errorMessage"
+                aria-live="polite"
+                id="representativeGroupError"
+              ></p>
+              <label for="representativeBsn">BSN gemachtigde</label>
+              <input
+                type="text"
+                id="representativeBsn"
+                name="bsnGemachtigde"
+                inputmode="numeric"
+                minlength="8"
+                maxlength="9"
+                pattern="\d{8,9}"
+                data-error="Vul een geldig BSN in van 8 of 9 cijfers!"
+                required
+              />
+              <p
+                class="errorMessage"
+                aria-live="polite"
+                id="representativeBsnError"
+              ></p>
+
+              <label for="advisorBeconNumber">Beconnummer adviseur</label>
+              <input
+                type="text"
+                id="advisorBeconNumber"
+                name="beconnummerAdviseur"
+                inputmode="numeric"
+                minlength="7"
+                maxlength="7"
+                pattern="\d{7}"
+                data-error="Een beconnummer moet uit 7 cijfers bestaan."
+              />
+              <p
+                class="errorMessage"
+                aria-live="polite"
+                id="advisorBeconNumberError"
+              ></p>
+
+              <label for="notaryProtocolNumber">Protocolnummer notaris</label>
+              <input
+                type="text"
+                id="notaryProtocolNumber"
+                name="protocolnummerNotaris"
+                inputmode="numeric"
+                minlength="6"
+                maxlength="6"
+                pattern="\d{6}"
+                data-error="Protocolnummer moet 6 cijfers zijn."
+              />
+              <p
+                class="errorMessage"
+                aria-live="polite"
+                id="notaryProtocolNumberError"
+              ></p>
+            </fieldset>
           </fieldset>
         </fieldset>
         <button type="submit">Verstuur</button>

@@ -239,15 +239,6 @@ button {
   }
 }
 
-/* legend > input:has([type="radio"]) {
-  color: black;
-  font-family: var(--bodyFont);
-  font-weight: 400;
-  font-size: var(--bodyFontsize);
-  margin-bottom: 0.5em;
-  display: flex;
-} */
-
 /* ====================== */
 /*    Input styling       */
 /* ====================== */
@@ -317,7 +308,7 @@ input[type="radio"]:focus-visible {
   margin-top: 1em;
 }
 
-input:user-valid {
+input[required]:user-valid {
   outline: 2px solid rgb(24, 166, 24);
   background-color: rgb(236 255 236);
 }
@@ -344,11 +335,6 @@ input[type="date"]:user-invalid {
   outline: 2px solid rgb(212, 60, 60);
   background-color: rgb(251 233 233);
 }
-
-/* .radioWrapper:has(input[type="radio"]:user-valid) {
-  outline: 2px solid rgb(24, 166, 24);
-  background-color: rgb(217 241 217);
-} */
 
 .radioWrapper:has(input[type="radio"]:focus-visible) {
   outline: 2px solid #1739bf;
@@ -441,6 +427,11 @@ input.hasError {
   background-color: rgb(251 233 233);
 }
 
+input.hasSuccess {
+  outline: 2px solid rgb(24, 166, 24);
+  background-color: rgb(236 255 236);
+}
+
 .radioWrapper:has(input[type="radio"]:focus-visible) {
   outline: 2px solid var(--nsBlue);
 }
@@ -449,4 +440,71 @@ input.hasError {
 .nestedFieldset input:user-valid {
   outline: 1px solid #85868a;
   background-color: white;
+}
+
+.errorSummary {
+  border: 2px solid #d4351c;
+  background: #fdf4f4;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.errorSummary h2 {
+  font-size: var(--headerFontsize);
+  border-bottom: none;
+  margin: 0;
+}
+
+.errorSummary p {
+  font-family: var(--bodyFont);
+  font-size: var(--bodyFontsize);
+  margin: 0;
+}
+
+.errorSummary a {
+  color: #005ea5;
+}
+
+.errorSummary li {
+  font-family: var(--bodyFont);
+  font-size: 1em;
+  margin: 1em;
+}
+
+.errorSummary ul {
+  padding: 0;
+}
+
+.pattern {
+  color: black;
+  font-family: var(--bodyFont);
+  font-size: var(--bodyFontsize);
+  padding-bottom: 1.5em;
+  padding-top: 1em;
+  display: flex;
+}
+
+input:disabled {
+  background: #f2f2f2;
+  color: #ff0000;
+  cursor: not-allowed;
+  opacity: 0.1;
+}
+
+label:has(+ input:disabled) {
+  color: rgb(120, 120, 120);
+  opacity: 0.3;
+}
+
+#representativeGroup input:user-valid:focus {
+  outline: 2px solid var(--nsBlue);
+}
+#representativeGroup input:user-valid:focus {
+  outline: 2px solid var(--nsBlue);
+}
+
+.nietVerplicht {
+  color: inherit;
+  margin-left: 0;
+  margin-bottom: 2em;
 }
