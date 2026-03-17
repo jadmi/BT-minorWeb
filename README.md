@@ -150,3 +150,9 @@ https://github.com/user-attachments/assets/04f5793c-60da-4978-99df-865ee4ba51fd
 
 
 Deze week styling helemaal omgegooid, vervolgens gedoken in custom form validation en wat er allemaal bij komt kijken qua toegankelijkheid. 
+
+## Tussentijd
+<img width="451" height="413" alt="image" src="https://github.com/user-attachments/assets/85771aa6-608c-4abb-b502-db18eec24605" /> |
+
+Error summary bovenaan het formulier toegevoegd, links geven focus op het bijbehorende veld. Nadat je op verzenden drukt wordt je ook hiernaar toegestuurd en accessible voor screenreaders met tabindex. 
+
