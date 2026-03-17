@@ -61,7 +61,7 @@
               name="voornaam"
               required
               pattern="^[A-Za-z.]+$"
-              data-error="Vul alleen letters bij voorletters!"
+              data-error="Vul alleen letters in bij voorletters!"
             />
             <p class="errorMessage" aria-live="polite" id="firstNameError"></p>
 
@@ -76,7 +76,7 @@
               name="achternaam"
               required
               pattern="^[A-Za-z.]+$"
-              data-error="Vul alleen letters in als achternaam!"
+              data-error="Vul alleen letters bij je achternaam!"
             />
             <p class="errorMessage" aria-live="polite" id="lastNameError"></p>
 
@@ -153,7 +153,7 @@
 
             <div class="optionalQuestion">
               <fieldset class="optionalChoice">
-                <legend>
+                <legend class="followUpQuestion">
                   Hadden de overledene en diens echtgenoot of geregistreerde
                   partner huwelijkse of partnerschapsvoorwaarden laten
                   vastleggen in een notariële akte?
@@ -172,6 +172,7 @@
                 <label for="deed" class="fileLabel">
                   <div>
                     <svg
+                      aria-hidden="true"
                       width="20"
                       height="20"
                       viewBox="0 0 24 24"
@@ -203,7 +204,7 @@
 
               <div class="optionalQuestion">
                 <fieldset class="nestedFieldset">
-                  <legend class="nestedLegend">
+                  <legend class="followUpQuestion">
                     Hadden de overledene en diens partner een finaal
                     verrekenbeding?
                   </legend>
@@ -233,12 +234,12 @@
               </div>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset class="testamentInfo">
             <!-- Vraag 3: Testamentgegevens -->
 
             <legend class="title">3. Testamentgegevens</legend>
 
-            <fieldset class="optionalChoice">
+            <fieldset class="optionalChoice testament">
               <legend>Had de overledene een testament?</legend>
 
               <label class="radioWrapper">
@@ -259,7 +260,7 @@
 
             <div class="optionalQuestion">
               <fieldset class="nestedFieldset">
-                <legend>
+                <legend class="followUpQuestion">
                   Vul de gegevens in van de notaris die het testament heeft
                   opgemaakt en de datum van het testament.
                 </legend>
@@ -281,7 +282,7 @@
                   id="firstNameNotary"
                   name="voornaamNotaris"
                   pattern="^[A-Za-z.]+$"
-                  data-error="Vul alleen letters bij voorletters!"
+                  data-error="Vul alleen letters in bij voorletters!"
                 />
                 <label for="prefixNotary">Tussenvoegsel(s) </label>
                 <input
@@ -295,7 +296,7 @@
                   id="lastNameNotary"
                   name="achternaamNotaris"
                   pattern="^[A-Za-z.]+$"
-                  data-error="Vul alleen letters bij de notaris achternaam!"
+                  data-error="Vul alleen letters in bij de notaris achternaam!"
                 />
                 <label for="testamentDate"
                   >Datum van het testament of van de laatste wijziging</label
@@ -304,73 +305,117 @@
               </fieldset>
             </div>
           </fieldset>
-          <fieldset>
-            <legend class="title">4. Gegevens gemachtigde</legend>
-            <fieldset id="representativeGroup">
-              <legend class="pattern">
-                Vul 1 van de 3 in: het bsn of RSIN van de gemachtigde, het
-                beconnummer van de adviseur of het protocolnummer van de notaris
+
+          <fieldset class="declerationInfo">
+            <!-- Vraag 4: Aangiftegegevens -->
+
+            <legend class="title">4. Aangiftegegevens</legend>
+            <fieldset class="optionalChoice">
+              <legend>
+                Zijn er verkrijgers voor wie u geen aangifte doet?
               </legend>
-              <p
-                class="errorMessage"
-                aria-live="polite"
-                id="representativeGroupError"
-              ></p>
-              <label for="representativeBsn">BSN gemachtigde</label>
-              <input
-                type="text"
-                id="representativeBsn"
-                name="bsnGemachtigde"
-                inputmode="numeric"
-                minlength="8"
-                maxlength="9"
-                pattern="\d{8,9}"
-                data-error="Vul een geldig BSN in van 8 of 9 cijfers!"
-                required
-              />
-              <p
-                class="errorMessage"
-                aria-live="polite"
-                id="representativeBsnError"
-              ></p>
 
-              <label for="advisorBeconNumber">Beconnummer adviseur</label>
-              <input
-                type="text"
-                id="advisorBeconNumber"
-                name="beconnummerAdviseur"
-                inputmode="numeric"
-                minlength="7"
-                maxlength="7"
-                pattern="\d{7}"
-                data-error="Een beconnummer moet uit 7 cijfers bestaan."
-              />
-              <p
-                class="errorMessage"
-                aria-live="polite"
-                id="advisorBeconNumberError"
-              ></p>
-
-              <label for="notaryProtocolNumber">Protocolnummer notaris</label>
-              <input
-                type="text"
-                id="notaryProtocolNumber"
-                name="protocolnummerNotaris"
-                inputmode="numeric"
-                minlength="6"
-                maxlength="6"
-                pattern="\d{6}"
-                data-error="Protocolnummer moet 6 cijfers zijn."
-              />
-              <p
-                class="errorMessage"
-                aria-live="polite"
-                id="notaryProtocolNumberError"
-              ></p>
+              <label class="radioWrapper">
+                <input type="radio" name="verkrijger" value="ja" />
+                Ja</label
+              >
+              <label class="radioWrapper">
+                <input
+                  type="radio"
+                  name="verkrijger"
+                  required
+                  data-error="Verkrijger keuze is verplicht!"
+                />
+                Nee</label
+              >
+              <p class="errorMessage radio" aria-live="polite"></p>
             </fieldset>
+            <div class="optionalQuestion" id="beneficiaryContainer">
+              <fieldset class="nestedFieldset">
+                <legend class="followUpQuestion">
+                  Voer de gegevens in van de verkrijger
+                </legend>
+                <p
+                  class="errorMessage"
+                  aria-live="polite"
+                  id="lastNameError"
+                ></p>
+
+                <label for="bsnNumber">BSN of RSIN verkrijger </label>
+                <input
+                  type="text"
+                  id="bsnNumber"
+                  name="bsnNummer"
+                  inputmode="numeric"
+                  minlength="8"
+                  maxlength="9"
+                  pattern="\d{8,9}"
+                  required
+                  data-error="Vul een geldig BSN of RSIN in van 8 of 9 cijfers!"
+                />
+                <p
+                  class="errorMessage"
+                  aria-live="polite"
+                  id="bsnNumberError"
+                ></p>
+
+                <label for="firstNameBeneficiary">Voorletter(s) </label>
+                <input
+                  type="text"
+                  id="firstNameBeneficiary"
+                  name="voornaamNotaris"
+                  pattern="^[A-Za-z.]+$"
+                  data-error="Vul alleen letters in bij voorletters!"
+                />
+                <label for="prefixBeneficiary">Tussenvoegsel(s) </label>
+                <input
+                  type="text"
+                  id="prefixBeneficiary"
+                  name="tussenvoegselVerkrijger"
+                />
+                <label for="lastNameBeneficiary">Achternaam</label>
+                <input
+                  type="text"
+                  id="lastNameBeneficiary"
+                  name="achternaamVerkrijger"
+                  pattern="^[A-Za-z.]+$"
+                  data-error="Vul alleen letters in bij de achternaam van de verkrijger!"
+                />
+                <fieldset class="nestedFieldset">
+                  <legend class="followUpQuestion">
+                    Krijgt deze verkrijger waarvoor u geen aangifte doet het
+                    hele vermogen?
+                  </legend>
+                  <label class="radioWrapper">
+                    <input type="radio" name="verkrijgerVraag1" />
+                    Ja</label
+                  >
+                  <label class="radioWrapper">
+                    <input type="radio" name="verkrijgerVraag1" />
+                    Nee</label
+                  >
+                </fieldset>
+                <fieldset class="nestedFieldset">
+                  <legend class="followUpQuestion">
+                    Doet deze verkrijger een beroep op diens wettelijke erfdeel?
+                  </legend>
+                  <label class="radioWrapper">
+                    <input type="radio" name="verkrijgerVraag2" />
+                    Ja</label
+                  >
+                  <label class="radioWrapper">
+                    <input type="radio" name="verkrijgerVraag2" />
+                    Nee</label
+                  >
+                  <button type="button" class="beneficiary">
+                    Verkrijger toevoegen
+                  </button>
+                </fieldset>
+              </fieldset>
+            </div>
           </fieldset>
         </fieldset>
-        <button type="submit">Verstuur</button>
+        <button type="submit">Verstuur Formulier</button>
       </form>
     </main>
   </body>

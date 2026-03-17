@@ -25,7 +25,7 @@ html {
   --headerFont: "headerFont", Helvetica, Arial, sans-serif;
   --bodyFont: "bodyFont", Helvetica, Arial, sans-serif;
   --bodyFontsize: 1.1rem;
-  --headerFontsize: 1.2rem;
+  --headerFontsize: 1.3rem;
   --radioSize: clamp(17px, 2vw, 20px);
   --nsBlue: #0063d3;
   --nsYellow: rgb(255, 201, 23);
@@ -125,14 +125,10 @@ fieldset {
   padding-bottom: 1em;
 }
 
-fieldset:last-of-type {
-  padding-bottom: 1.5em;
-}
-
 fieldset fieldset fieldset legend {
   color: black;
   font-family: var(--bodyFont);
-  font-size: var(--bodyFontsize);
+  font-size: 1.2rem;
   padding-bottom: 1.5em;
   padding-top: 1.5em;
   display: flex;
@@ -168,12 +164,28 @@ label {
 }
 
 .personInfo,
-.partnerInfo {
-  margin-bottom: 1.8em;
+.partnerInfo,
+.testamentInfo,
+.declerationInfo {
+  margin-bottom: 3.3em;
+  padding-bottom: 2em;
+  border-bottom: 4px solid var(--nsYellow);
+}
+.partnerInfo,
+.testamentInfo {
+  padding-bottom: 3em;
+}
+
+.declerationInfo {
+  margin-bottom: 1.3em;
 }
 
 .personInfo label {
   padding-top: 0.4em;
+}
+
+.followUpQuestion {
+  padding-top: 2.5em;
 }
 
 .fileLabel {
@@ -205,6 +217,7 @@ label {
   font-weight: 500;
   display: flex;
   gap: 0.5em;
+  cursor: pointer;
 }
 
 #fileName {
@@ -224,6 +237,7 @@ span {
 /* styling van ns site */
 button {
   font-family: var(--headerFont);
+  font-size: 1rem;
   color: white;
   background-color: var(--nsBlue);
   border: none;
@@ -356,11 +370,13 @@ input[type="date"]:user-invalid {
 }
 
 input[type="file"] {
-  display: none;
-}
-
-input[type="file"] button {
-  padding: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::file-selector-button */
@@ -393,12 +409,30 @@ Hulp van Vasilis */
 .radioWrapper + .fileLabel,
 .marriageDiv {
   display: none;
+  opacity: 0;
+  translate: 0 -35px;
+  transition:
+    opacity 1s ease,
+    translate 1s ease,
+    display 1s allow-discrete;
+}
+
+.radioWrapper + .fileLabel,
+.marriageDiv {
+  translate: 0 -5px;
 }
 
 .optionalChoice:has([value="ja"]:checked) + .optionalQuestion,
 .radioWrapper:has([value="ja"]:checked) ~ .fileLabel,
 .radioWrapper:has([value="ja"]:checked) ~ .marriageDiv {
   display: block;
+  opacity: 1;
+  translate: 0 0;
+
+  @starting-style {
+    opacity: 0;
+    translate: 0 -25px;
+  }
 }
 
 /* ====================== */
@@ -507,4 +541,19 @@ label:has(+ input:disabled) {
   color: inherit;
   margin-left: 0;
   margin-bottom: 2em;
+}
+
+.beneficiary {
+  margin-left: 0;
+  margin-top: 1.5rem;
+  color: var(--nsButtonBlue);
+  background-color: var(--nsYellow);
+  font-family: var(--headerFont);
+  box-shadow: none;
+  font-weight: 700;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  border-radius: 6px;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
 }
