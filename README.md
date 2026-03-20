@@ -156,3 +156,21 @@ Deze week styling helemaal omgegooid, vervolgens gedoken in custom form validati
 
 Error summary bovenaan het formulier toegevoegd, links geven focus op het bijbehorende veld. Nadat je op verzenden drukt wordt je ook hiernaar toegestuurd en accessible voor screenreaders met tabindex. 
 
+## Checkout dag 1/2
+Ik ben bezig geweest met de laatste grote dingen die nog gedaan moesten worden —> pattern toegevoegd, verkrijgers kunnen toevoegen en progressive disclosure overzichtelijker maken door middel van @ style en transitions en scroll into view.
+Tot slot styling verbeterd in de vorm van meer witruimte en afbakenen van de secties met de NS border maar ook duidelijker onderscheid vragen kopjes en labels zoals de NS dat doet.
+
+# Eindresultaat
+Ik ben tevreden met het eindresultaat, en heb vooral veel aandacht gestoken in de custom error validatie, screenreaders/toegankelijkheid en de algemene look and feel. 
+
+https://github.com/user-attachments/assets/2cfa71c1-993d-41c6-8616-bb624526bd5b
+
+## Toelichting keuzes:
+
+- Gekozen voor meer/veel witruimte samen met borders per sectie voor structuur en overzichtelijkheid, zo zie je duidelijk onderscheid tussen de vragen wat eerst niet zo was, zeker bij progressive disclosure. 
+- De Progressive disclosure heb ik met transitions en scrollto overzichtelijker gemaakt, je ziet nu wel de keuze die je gemaakt en begint bij het begin van de nieuwe vraag.
+- Custom error validatie, daarbij progressive enhancement dat html zelf ook validatie heeft met dingen zoals required, regex en titles.
+- Gekozen voor een enkel form want door middel van de progressive disclosure en de witruimtes/secties zorg ik er voor dat het behapbaar wordt.
+- De taal heb ik niet aangepast voor de lange vragen met of/of/of aangezien het een officieel document is zal er over nagedacht zijn. Daarnaast zit er geen tijdsdruk op het formulier dus je alle tijd nemen voor de vragen.
+- Richting het eind de legends ook blauw gemaakt, anders te weinig onderscheid tussen vragen.
+
