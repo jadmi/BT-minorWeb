@@ -174,3 +174,23 @@ https://github.com/user-attachments/assets/2cfa71c1-993d-41c6-8616-bb624526bd5b
 - De taal heb ik niet aangepast voor de lange vragen met of/of/of aangezien het een officieel document is zal er over nagedacht zijn. Daarnaast zit er geen tijdsdruk op het formulier dus je alle tijd nemen voor de vragen.
 - Richting het eind de legends ook blauw gemaakt, anders te weinig onderscheid tussen vragen.
 
+## Bronnen
+https://www.youtube.com/watch?v=h5qqmE83Tes
+https://www.youtube.com/watch?v=awNYtIAu6pI
+https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+https://stackoverflow.com/questions/574904/get-next-previous-element-using-javascript
+https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden
+https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css
+https://stackoverflow.com/questions/44560597/flexbox-issue-while-aligning-radio-button
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::file-selector-button
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:invalid
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:checked
+https://dev.to/kevinbism/css-animation-with-display-none-4pan
+Victor & Vasilis
+
+Gebruik AI: algemeen voor slordigheids foutjes/structurering / in javascript efficienter schrijven zoals onderstaand.
+specifiek: // Gebruik AI: prompt: how to write this if else more efficiently? - ternary operator geleerd
