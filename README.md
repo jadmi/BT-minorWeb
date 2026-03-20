@@ -190,7 +190,8 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::file-sele
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:invalid
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:checked
 https://dev.to/kevinbism/css-animation-with-display-none-4pan
-Victor & Vasilis
+Victor & Vasilis - algemeen
+Kerr - gedeelte Javascript
 
 Gebruik AI: algemeen voor slordigheids foutjes/structurering / in javascript efficienter schrijven zoals onderstaand.
 specifiek: // Gebruik AI: prompt: how to write this if else more efficiently? - ternary operator geleerd
