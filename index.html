@@ -35,8 +35,8 @@
           ></path>
         </svg>
         <h2>Aangifte erfbelasting</h2>
+        <h3>Alle velden zijn verplicht, tenzij anders aangegeven.</h3>
       </div>
-      <!-- <h2>Erfbelasting formulier</h2> -->
       <form>
         <div
           id="errorSummary"
@@ -54,7 +54,7 @@
           <fieldset class="personInfo">
             <!-- Vraag 1a: persoongegevens -->
             <legend class="title">1. Persoonsgegevens overledene</legend>
-            <label for="firstName">Voorletter(s) </label>
+            <label for="firstName">Voorletter(s)</label>
             <input
               type="text"
               id="firstName"
@@ -62,10 +62,11 @@
               required
               pattern="^[A-Za-z.]+$"
               data-error="Vul alleen letters in bij voorletters!"
+              title="Vul alleen letters in bij voorletters!"
             />
             <p class="errorMessage" aria-live="polite" id="firstNameError"></p>
 
-            <label for="prefix">Tussenvoegsel(s) </label>
+            <label for="prefix">Tussenvoegsel(s) - niet verplicht </label>
             <input type="text" id="prefix" name="tussenvoegsel" />
             <p class="errorMessage" aria-live="polite" id="prefixError"></p>
 
@@ -77,6 +78,7 @@
               required
               pattern="^[A-Za-z.]+$"
               data-error="Vul alleen letters bij je achternaam!"
+              title="Vul alleen letters bij je achternaam!"
             />
             <p class="errorMessage" aria-live="polite" id="lastNameError"></p>
 
@@ -91,14 +93,10 @@
               pattern="\d{8,9}"
               required
               data-error="Vul een geldig BSN in van 8 of 9 cijfers!"
+              title="Vul een geldig BSN in van 8 of 9 cijfers!"
             />
             <p class="errorMessage" aria-live="polite" id="bsnNumberError"></p>
-            <!-- title="BSN
-                moet
-                9
-                cijfers
-                zijn.
-                " -->
+
             <label for="deceaseDate">Overlijdensdatum </label>
             <input
               type="date"
@@ -116,7 +114,7 @@
             <!-- https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/wanneer-moet-mijn-aangifte-erfbelasting-binnen-zijn /> -->
           </fieldset>
 
-          <!-- Vraag 2: partnergegevens -->
+          <!-- Sectie 2: partnergegevens -->
 
           <fieldset class="partnerInfo">
             <legend class="title">2. Partner- en huwelijksgegevens</legend>
@@ -235,7 +233,7 @@
             </div>
           </fieldset>
           <fieldset class="testamentInfo">
-            <!-- Vraag 3: Testamentgegevens -->
+            <!-- Sectie 3: Testamentgegevens -->
 
             <legend class="title">3. Testamentgegevens</legend>
 
@@ -273,6 +271,7 @@
                   minlength="6"
                   maxlength="6"
                   pattern="\d{6}"
+                  data-error="Protocolnummer moet 6 cijfers zijn."
                   title="Protocolnummer moet 6 cijfers zijn."
                 />
 
@@ -282,9 +281,12 @@
                   id="firstNameNotary"
                   name="voornaamNotaris"
                   pattern="^[A-Za-z.]+$"
-                  data-error="Vul alleen letters in bij voorletters!"
+                  data-error="Vul alleen letters in bij de voorletters!"
+                  title="Vul alleen letters in bij de voorletters!"
                 />
-                <label for="prefixNotary">Tussenvoegsel(s) </label>
+                <label for="prefixNotary"
+                  >Tussenvoegsel(s) - niet verplicht
+                </label>
                 <input
                   type="text"
                   id="prefixNotary"
@@ -296,7 +298,8 @@
                   id="lastNameNotary"
                   name="achternaamNotaris"
                   pattern="^[A-Za-z.]+$"
-                  data-error="Vul alleen letters in bij de notaris achternaam!"
+                  data-error="Vul alleen letters in bij de achternaam!"
+                  title="Vul alleen letters in bij de achternaam!"
                 />
                 <label for="testamentDate"
                   >Datum van het testament of van de laatste wijziging</label
@@ -307,7 +310,7 @@
           </fieldset>
 
           <fieldset class="declerationInfo">
-            <!-- Vraag 4: Aangiftegegevens -->
+            <!-- Sectie 4: Aangiftegegevens -->
 
             <legend class="title">4. Aangiftegegevens</legend>
             <fieldset class="optionalChoice">
@@ -335,44 +338,55 @@
                 <legend class="followUpQuestion">
                   Voer de gegevens in van de verkrijger
                 </legend>
-                <p
-                  class="errorMessage"
-                  aria-live="polite"
-                  id="lastNameError"
-                ></p>
 
-                <label for="bsnNumber">BSN of RSIN verkrijger </label>
+                <label for="bsnNumberBeneficiary"
+                  >BSN of RSIN verkrijger
+                </label>
                 <input
                   type="text"
-                  id="bsnNumber"
+                  id="bsnNumberBeneficiary"
                   name="bsnNummer"
                   inputmode="numeric"
                   minlength="8"
                   maxlength="9"
                   pattern="\d{8,9}"
-                  required
                   data-error="Vul een geldig BSN of RSIN in van 8 of 9 cijfers!"
                 />
                 <p
                   class="errorMessage"
                   aria-live="polite"
-                  id="bsnNumberError"
+                  id="bsnNumberBeneficiaryError"
                 ></p>
 
-                <label for="firstNameBeneficiary">Voorletter(s) </label>
+                <label for="firstNameBeneficiary">Voorletter(s)</label>
                 <input
                   type="text"
                   id="firstNameBeneficiary"
-                  name="voornaamNotaris"
+                  name="voornaamVerkrijger"
                   pattern="^[A-Za-z.]+$"
-                  data-error="Vul alleen letters in bij voorletters!"
+                  data-error="Vul alleen letters in bij de voorletters!"
+                  title="Vul alleen letters in bij de voorletters!"
                 />
-                <label for="prefixBeneficiary">Tussenvoegsel(s) </label>
+                <p
+                  class="errorMessage"
+                  aria-live="polite"
+                  id="firstNameBeneficiaryError"
+                ></p>
+
+                <label for="prefixBeneficiary"
+                  >Tussenvoegsel(s) - niet verplicht
+                </label>
                 <input
                   type="text"
                   id="prefixBeneficiary"
                   name="tussenvoegselVerkrijger"
                 />
+                <p
+                  class="errorMessage"
+                  aria-live="polite"
+                  id="prefixBeneficiaryError"
+                ></p>
+
                 <label for="lastNameBeneficiary">Achternaam</label>
                 <input
                   type="text"
@@ -380,7 +394,14 @@
                   name="achternaamVerkrijger"
                   pattern="^[A-Za-z.]+$"
                   data-error="Vul alleen letters in bij de achternaam van de verkrijger!"
+                  title="Vul alleen letters in bij de achternaam"
                 />
+                <p
+                  class="errorMessage"
+                  aria-live="polite"
+                  id="lastNameBeneficiaryError"
+                ></p>
+
                 <fieldset class="nestedFieldset">
                   <legend class="followUpQuestion">
                     Krijgt deze verkrijger waarvoor u geen aangifte doet het

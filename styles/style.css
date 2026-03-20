@@ -26,10 +26,11 @@ html {
   --bodyFont: "bodyFont", Helvetica, Arial, sans-serif;
   --bodyFontsize: 1.1rem;
   --headerFontsize: 1.3rem;
-  --radioSize: clamp(17px, 2vw, 20px);
+  --nsHeaderColor: #003082;
   --nsBlue: #0063d3;
   --nsYellow: rgb(255, 201, 23);
   --nsButtonBlue: rgb(0, 48, 130);
+  --errorColor: red;
 }
 
 /* https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css  */
@@ -51,6 +52,8 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0rem 1.5rem;
+  padding-bottom: 0.8em;
+  border-bottom: 4px solid var(--nsYellow);
 }
 
 h1 {
@@ -60,7 +63,7 @@ h1 {
   padding: 0.4em;
   margin: 0;
   font-size: 1.2rem;
-  background-color: red;
+  background-color: var(--errorColor);
   width: 100%;
 }
 
@@ -75,26 +78,19 @@ h1 {
   width: 100%;
 }
 
-header div {
-  width: 100%;
-  height: 100%;
-  background-color: red;
-}
-
-header h2 {
-  color: red;
-  padding: 0;
-  margin: 0;
-}
-
 h2 {
   font-family: var(--headerFont);
   color: #003082;
   font-size: clamp(1.4rem, 1.3429rem + 0.2857vw, 1.6rem);
-  padding-bottom: 0.8em;
-  border-bottom: 4px solid var(--nsYellow);
   text-align: left;
   width: fit-content;
+  margin: 0;
+}
+
+h3 {
+  font-family: var(--headerFont);
+  color: #003082;
+  font-size: 1.1rem;
 }
 
 /* ====================== */
@@ -105,6 +101,7 @@ form {
   padding: 0.5rem;
   border-radius: 6px;
   max-width: 550px;
+  margin-top: 1.4em;
 }
 
 @media (min-width: 550px) {
@@ -126,9 +123,10 @@ fieldset {
 }
 
 fieldset fieldset fieldset legend {
-  color: black;
-  font-family: var(--bodyFont);
-  font-size: 1.2rem;
+  color: var(--nsButtonBlue);
+  font-family: var(--headerFont);
+  font-size: 1.1rem;
+  font-weight: 700;
   padding-bottom: 1.5em;
   padding-top: 1.5em;
   display: flex;
@@ -143,12 +141,8 @@ fieldset fieldset fieldset legend {
 legend {
   font-family: var(--headerFont);
   font-size: var(--headerFontsize);
-  color: #003082;
+  color: var(--nsHeaderColor);
   padding-inline: 0;
-}
-
-.nestedLegend {
-  padding-top: 0.5em;
 }
 
 .title {
@@ -199,7 +193,6 @@ label {
   transition: all 0.2s ease-in-out;
   border-radius: 6px;
   width: fit-content;
-  transition: all 0.2s ease-in-out;
 
   &:hover {
     background-color: rgb(228, 181, 25);
@@ -259,7 +252,7 @@ button {
 
 input {
   font-size: inherit;
-  margin-bottom: 1em;
+  margin-bottom: 1.3em;
   width: 100%;
   padding: clamp(8px, 2vw, 11px);
   outline: 0;
@@ -279,20 +272,13 @@ input:focus {
   caret-color: black;
 }
 
-input:focus-within {
-  outline: 2px solid var(--nsBlue);
-}
-
 /* 
 https://stackoverflow.com/questions/44560597/flexbox-issue-while-aligning-radio-button */
 input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
-  height: 0; /* margin: 0;
-  height: var(--radioSize);
-  width: var(--radioSize);
-  flex-shrink: 0; */
+  height: 0;
 }
 
 input[type="radio"]:focus {
@@ -327,10 +313,6 @@ input[required]:user-valid {
   background-color: rgb(236 255 236);
 }
 
-/* input:user-valid:has(.errorMessage) {
-  .errorMessage: display none
-} */
-
 input:user-invalid {
   outline: 2px solid rgb(212, 60, 60);
   background-color: rgb(251 233 233);
@@ -351,7 +333,7 @@ input[type="date"]:user-invalid {
 }
 
 .radioWrapper:has(input[type="radio"]:focus-visible) {
-  outline: 2px solid #1739bf;
+  outline: 2px solid var(--nsBlue);
   background-color: #f2f8ff;
   font-weight: bold;
 }
@@ -395,16 +377,26 @@ input[type="date"] {
   color: rgb(51, 50, 50);
 }
 
-/* 
-input:focus:invalid {
-  background-color: rebeccapurple;
+.beneficiary {
+  margin-left: 0;
+  margin-top: 1.5rem;
+  color: var(--nsButtonBlue);
+  background-color: var(--nsYellow);
+  font-family: var(--headerFont);
+  box-shadow: none;
+  font-weight: 700;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  border-radius: 6px;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
 }
-naast kleur ook een icon voor slechtziende */
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:invalid 
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:checked
 
 Hulp van Vasilis */
+/* https://dev.to/kevinbism/css-animation-with-display-none-4pan */
 .optionalChoice + .optionalQuestion,
 .radioWrapper + .fileLabel,
 .marriageDiv {
@@ -466,16 +458,6 @@ input.hasSuccess {
   background-color: rgb(236 255 236);
 }
 
-.radioWrapper:has(input[type="radio"]:focus-visible) {
-  outline: 2px solid var(--nsBlue);
-}
-
-.nestedFieldset input:user-invalid,
-.nestedFieldset input:user-valid {
-  outline: 1px solid #85868a;
-  background-color: white;
-}
-
 .errorSummary {
   border: 2px solid #d4351c;
   background: #fdf4f4;
@@ -507,53 +489,4 @@ input.hasSuccess {
 
 .errorSummary ul {
   padding: 0;
-}
-
-.pattern {
-  color: black;
-  font-family: var(--bodyFont);
-  font-size: var(--bodyFontsize);
-  padding-bottom: 1.5em;
-  padding-top: 1em;
-  display: flex;
-}
-
-input:disabled {
-  background: #f2f2f2;
-  color: #ff0000;
-  cursor: not-allowed;
-  opacity: 0.1;
-}
-
-label:has(+ input:disabled) {
-  color: rgb(120, 120, 120);
-  opacity: 0.3;
-}
-
-#representativeGroup input:user-valid:focus {
-  outline: 2px solid var(--nsBlue);
-}
-#representativeGroup input:user-valid:focus {
-  outline: 2px solid var(--nsBlue);
-}
-
-.nietVerplicht {
-  color: inherit;
-  margin-left: 0;
-  margin-bottom: 2em;
-}
-
-.beneficiary {
-  margin-left: 0;
-  margin-top: 1.5rem;
-  color: var(--nsButtonBlue);
-  background-color: var(--nsYellow);
-  font-family: var(--headerFont);
-  box-shadow: none;
-  font-weight: 700;
-  padding: 0.6rem 0.8rem;
-  cursor: pointer;
-  border-radius: 6px;
-  width: fit-content;
-  transition: all 0.2s ease-in-out;
 }
